@@ -16,4 +16,9 @@ body{
     justify-content: center;
     align-items: center;
 }
+.flex-start {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
 

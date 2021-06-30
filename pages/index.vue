@@ -12,28 +12,61 @@
         </div>
       </div>
     </div>
+
     <div class="my-40">
       <ProductType />
     </div>
+
+    <section class="w-9/12 mx-auto">
+      <div class="showcase-1 relative pb-40">
+        <img :src="patternCirle" class="cirle-pattern -ml-20">
+        <div class="absolute w-full h-full overflow-y-hidden top-0 left-0">
+
+          <div class="w-9/12 mx-auto flex-start gap-20 pt-20 ">
+            <div>
+              <img :src="zx9Speaker" class="zx9">
+            </div>
+            <div class="pl-10">
+              <h1 class="text-5xl text-white font-bold pt-12">ZX9 <br> SPEAKER</h1>
+              <p class="zx9-text py-10">Upgrade to premium speakers that are phenomenally built to deliver truly remarkable sound.</p>
+              <Button text="SEE PRODUCT" bgcolor="black" textColor="white" />
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- <Villian /> -->
+    <!-- <Footer /> -->
   </section>
 </template>
 
 <script>
 import Header from '../components/Header.vue'
+import Villian from '../components/Villian.vue'
+import Footer from '../components/Footer.vue'
 import Button from '../components/Button.vue'
 import ProductType from '../components/ProductType.vue'
 import HERO from '../assets/images/home/desktop/image-hero-2.jpg'
+import zx9Speaker from '../assets/images/home/desktop/image-speaker-zx9.png'
+import patternCirle from '../assets/images/home/desktop/pattern-circles.svg'
 
 export default {
   components: {
     Header,
+    Villian,
+    Footer,
     Button,
-    ProductType
+    ProductType,
+    Villian
     
   },
   data() {
     return {
-      HERO
+      HERO,
+      zx9Speaker,
+      patternCirle
     }
   }
 }
@@ -61,5 +94,19 @@ export default {
   padding-bottom: 25px;
   font-weight: 500;
 
+}
+.showcase-1 {
+  background: #D97E4A;;
+  height: 75vh;
+  border-radius: 10px;
+}
+.circle-pattern {
+  width: 100%;
+}
+.zx9 {
+  width: 815px;
+}
+.zx9-text {
+  color: hsla(0, 0%, 98%, 0.685);
 }
 </style>

@@ -41,13 +41,13 @@ header{
 
 header h2{
    cursor: pointer;
-   transition: 0.5s ease-in;
+   transition: 0.2s ease-in;
    text-transform: uppercase;
    font-weight: 600;
 }
 header h2:hover{
    color:#D97E4A;
-   transition: 0.5s ease-out;
+   transition: 0.2s ease-out;
    
 }
 
