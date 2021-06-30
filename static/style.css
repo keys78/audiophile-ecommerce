@@ -1,0 +1,19 @@
+/* utilty classes */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+*{
+    font-family: 'Manrope', sans-serif;
+}
+body{
+    font-family: 'Manrope', sans-serif;
+}
+.flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
