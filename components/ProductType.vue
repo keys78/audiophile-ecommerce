@@ -1,14 +1,18 @@
 <template>
     <div class="w-9/12 mx-auto pType">
 
-        <div class="phones-holder">
-            <img :src="headphones" alt="headphone pic" class="phones-images mx-auto" />
-            <h1 class="pb-2 -mt-2 font-bold">HEADPHONES</h1>
-            <div class="shop flex-center gap-3">
-                <h1>SHOP</h1>
-                <img :src="arrowRight" alt="" class="mx-auto pb-3 -mb-3">
+        <NuxtLink to="/Headphones">
+            <div class="phones-holder">
+                <img :src="headphones" alt="headphone pic" class="phones-images mx-auto" />
+                <h1 class="pb-2 -mt-2 font-bold">HEADPHONES</h1>
+                <div class="shop flex-center gap-3">
+                    <h1>SHOP</h1>
+                    <img :src="arrowRight" alt="" class="mx-auto pb-3 -mb-3">
+                </div>
             </div>
-        </div>
+        </NuxtLink>
+
+        <NuxtLink to="/Speakers">
         <div class="phones-holder">
             <img :src="speakers" alt="headphone pic" class="phones-images mx-auto" />
             <h1 class="pb-2  font-bold">SPEAKERS</h1>
@@ -17,6 +21,9 @@
                 <img :src="arrowRight" alt="" class="mx-auto pb-3 -mb-3">
             </div>
         </div>
+        </NuxtLink>
+
+        <NuxtLink to="Earphones">
         <div class="phones-holder">
             <img :src="earphones" alt="headphone pic" class="phones-images mx-auto mb-3" />
             <h1 class="pb-2 font-bold">EARPHONES</h1>
@@ -25,6 +32,7 @@
                 <img :src="arrowRight" alt="" class="mx-auto pb-3 -mb-3">
             </div>
         </div>
+        </NuxtLink>
         
     </div>
 </template>
@@ -64,6 +72,13 @@ export default {
     padding: 0.2rem;
     text-align: center;
     position: relative;
+    transition: ease-in 0.2s all;
+}
+
+.phones-holder:hover .shop h1 {
+    color:#e97d3e;
+    transition: ease-out 0.2s all;
+    opacity: 1;
 }
 
 .phones-images{

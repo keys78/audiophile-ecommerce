@@ -4,10 +4,10 @@
         <div class="w-9/12 mx-auto py-8 flex">
             <h1 class="logo w-8/12">audiophile</h1>
             <div class="flex w-4/12 mx-auto text-center">
-                <h2>Home</h2>
-                <h2>Headphones</h2>
-                <h2>Speakers</h2>
-                <h2>Earphones</h2>
+                <NuxtLink to="/"><h2>Home</h2></NuxtLink>
+                <NuxtLink to="/Headphones"><h2>Headphones</h2></NuxtLink>
+                <NuxtLink to="/Speakers"><h2>Speakers</h2></NuxtLink>
+                <NuxtLink to="/Earphones"><h2>Earphones</h2></NuxtLink>
             </div>
         </div>
         <div class="w-9/12 mx-auto flex">
@@ -26,7 +26,7 @@
             </div>
        </div>
        <div>
-            <h6 class="text-white text-sm opacity-60 text-center border-t border-gray-800 mt-3 mt-10 py-3">Figma design by <a class="text-blue-300" href="https://frontendmentor.io">Frontendmentor</a> | Coded by <a class="text-blue-300" href="https://twitter.com/Emmy31087589">Em_codes</a></h6>
+            <h6 class="text-white text-sm opacity-90 text-center border-t border-gray-800 mt-3 mt-10 py-3">Figma design by <a class="text-blue-300" href="https://frontendmentor.io">Frontendmentor</a> | Coded by <a class="text-blue-300" href="https://twitter.com/Emmy31087589">Em_codes</a></h6>
        </div>
   </footer>
   

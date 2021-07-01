@@ -54,7 +54,7 @@
           <img :src="yx1Earphones" class="yx1">
         </div>
         <div class="showcase-3b pt-28 pl-6 w-6/12">
-          <h1 class="text-3xl mb-4 text-black font-semibold"> YX1 EARPHONES </h1>
+          <h1 class="text-3xl mb-10 text-black font-semibold"> YX1 EARPHONES </h1>
           <Button text="SEE PRODUCT" bgcolor="white" textColor="black" class="border border-black" />
         </div>
 
