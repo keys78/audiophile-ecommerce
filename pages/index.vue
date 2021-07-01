@@ -4,7 +4,7 @@
     <div class="hero-container relative">
       <img class="hero mx-auto" :src="HERO"  alt="hero" />
       <div class="absolute w-9/12 mx-auto top-44 left-48">
-        <div class="w-4/12">
+        <div class="xl: w-4/12 w-6/12">
           <h1 class="hero-1-text">NEW PRODUCT</h1>
           <h1 class="hero-2-text">XX99 MARK II HEADPHONE</h1>
           <p class="desc">Experience natural, lifelike audio and exceptional build quality made for the passionate music enthusiast.</p>
@@ -38,30 +38,33 @@
       </div>
 
       <!--showcase-2-->
-      <div class="showcase-2 border-2 relative">
+      <div class="showcase-2 relative">
         <img :src="zx7Speaker" class="zx7">
-        <div class="absolute top-0 left-0">
-            <div class="w-full mx-auto pt-12">
-              <h1 class="text-2xl text-black"> ZX7 SPEAKER </h1>
-              <Button text="SEE PRODUCT" bgcolor="none" textColor="black" class="border-2 border-black" />
+        <div class="absolute w-full h-full top-0 left-0">
+            <div class="h-full w-10/12 mx-auto mx-auto pt-12">
+              <h1 class="text-3xl pt-16 text-black font-semibold"> ZX7 SPEAKER </h1>
+              <Button text="SEE PRODUCT" bgcolor="none" textColor="black" class="mt-10 border border-black" />
             </div>
         </div>
       </div>
 
-      <!-- showcase-2 -->
+      <!-- showcase-3 -->
       <div class="showcase flex">
-        <div>
-          <img :src="yx1Earphones" >
+        <div class="w-6/12">
+          <img :src="yx1Earphones" class="yx1">
         </div>
-        <div class="">
-          <Button text="SEE PRODUCT" bgcolor="white" textColor="black" class="border-2 border-black" />
+        <div class="showcase-3b pt-28 pl-6 w-6/12">
+          <h1 class="text-3xl mb-4 text-black font-semibold"> YX1 EARPHONES </h1>
+          <Button text="SEE PRODUCT" bgcolor="white" textColor="black" class="border border-black" />
         </div>
 
       </div>
     </section>
 
-    <!-- <Villian /> -->
-    <!-- <Footer /> -->
+    <div class="pt-28 pb-6">
+      <Villian  />
+    </div>
+    <Footer />
   </section>
 </template>
 
@@ -137,15 +140,18 @@ export default {
   color: hsla(0, 0%, 98%, 0.726);
 }
 
-/* 
-.showcase-2 {
-  
-} */
-
-
 .zx7{
   width: 100%;
   border-radius: 10px;
   margin:20px 0 20px 0;
+}
+.yx1 {
+    border-radius: 10px;
+}
+
+.showcase-3b {
+  background: #F2F2F2;
+   border-radius: 10px;
+   height: 320px;
 }
 </style>

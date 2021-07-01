@@ -26,7 +26,7 @@
             </div>
        </div>
        <div>
-            <h6 class="text-white text-sm text-center border-t border-gray-800 mt-3 mt-10 py-3">Figma design by <a class="text-blue-300" href="https://frontendmentor.io">Frontendmentor</a> | Coded by <a class="text-blue-300" href="https://twitter.com/Emmy31087589">Em_codes</a></h6>
+            <h6 class="text-white text-sm opacity-60 text-center border-t border-gray-800 mt-3 mt-10 py-3">Figma design by <a class="text-blue-300" href="https://frontendmentor.io">Frontendmentor</a> | Coded by <a class="text-blue-300" href="https://twitter.com/Emmy31087589">Em_codes</a></h6>
        </div>
   </footer>
   

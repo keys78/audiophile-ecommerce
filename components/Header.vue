@@ -4,10 +4,10 @@
             <h1 class="logo w-2/12">audiophile</h1>
             <!-- <img :src="LOGO" alt="logo"> -->
             <div class="nav-elements flex w-5/12 mx-auto text-center">
-                <h2>Home</h2>
-                <h2>Headphones</h2>
-                <h2>Speakers</h2>
-                <h2>Earphones</h2>
+                <NuxtLink to="/"><h2>Home</h2></NuxtLink>
+                <NuxtLink to="/Headphones"><h2>Headphones</h2></NuxtLink>
+                <NuxtLink to="/Speakers"><h2>Speakers</h2></NuxtLink>
+                <NuxtLink to="/Earphones"><h2>Earphones</h2></NuxtLink>
             </div>
             <img :src="CART"/>
         </div>
