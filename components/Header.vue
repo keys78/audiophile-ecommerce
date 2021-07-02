@@ -8,6 +8,7 @@
                 <NuxtLink to="/Headphones"><h2>Headphones</h2></NuxtLink>
                 <NuxtLink to="/Speakers"><h2>Speakers</h2></NuxtLink>
                 <NuxtLink to="/Earphones"><h2>Earphones</h2></NuxtLink>
+                <!-- <NuxtLink to="/test1"><h2>test1</h2></NuxtLink> -->
             </div>
             <img :src="CART"/>
         </div>

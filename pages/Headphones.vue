@@ -11,7 +11,9 @@
                     <h1 class="new-text">NEW PRODUCT</h1>
                     <h1 class="headphones-text text-black">XX99 MARK TWO HEADPHONES</h1>
                     <p class="headphones-desc">The new XX99 Mark II headphones is the pinnacle of pristine audio. It redefines your premium headphone experience by reproducing the balanced depth and precision of studio-quality sound.</p>
-                    <Button text="SEE PRODUCT" bgcolor="#D97E4A" textColor="hsl(0, 0%, 98%)"/>
+                    <NuxtLink :to="{name: 'ProductDetails', params: { id:1 }}">
+                        <Button text="SEE PRODUCT" bgcolor="#D97E4A" textColor="hsl(0, 0%, 98%)"/>
+                    </NuxtLink>
                 </div>
                 <div class="hp-img-1 lg:w-5/12 w-6/12">
                     <img :src="xx99" alt="headphones" class="xx99">
@@ -26,7 +28,9 @@
                 <div class="lg:w-4/12 w-5/12">
                     <h1 class="headphones-text text-black">XX99 MARK ONE HEADPHONES</h1>
                     <p class="headphones-desc">As the gold standard for headphones, the classic XX99 Mark I offers detailed and accurate audio reproduction for audiophiles, mixing engineers, and music aficionados alike in studios and on the go.</p>
-                    <Button text="SEE PRODUCT" bgcolor="#D97E4A" textColor="hsl(0, 0%, 98%)"/>
+                    <NuxtLink :to="{name: 'ProductDetails', params: { id:2 }}">
+                        <Button text="SEE PRODUCT" bgcolor="#D97E4A" textColor="hsl(0, 0%, 98%)"/>
+                    </NuxtLink>
                 </div>
             </div>
 
@@ -35,7 +39,9 @@
                 <div class="lg:w-4/12 w-5/12">
                     <h1 class="headphones-text text-black">XX59 HEADPHONES</h1>
                     <p class="headphones-desc">Enjoy your audio almost anywhere and customize it to your specific tastes with the XX59 headphones. The stylish yet durable versatile wireless headset is a brilliant companion at home or on the move.</p>
-                    <Button text="SEE PRODUCT" bgcolor="#D97E4A" textColor="hsl(0, 0%, 98%)"/>
+                    <NuxtLink :to="{name: 'ProductDetails', params: { id:3 }}">
+                        <Button text="SEE PRODUCT" bgcolor="#D97E4A" textColor="hsl(0, 0%, 98%)"/>
+                    </NuxtLink>
                 </div>
                 <div class="hp-img-1 lg:w-5/12 w-6/12">
                     <img :src="xx59" alt="headphones" class="xx99">
