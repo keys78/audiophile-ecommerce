@@ -1,34 +1,65 @@
 <template>
     <section>
         <Header />
-        <div v-if="product"> 
-            <h1>{{ id }}</h1>
-            <h1>{{ product.new_product }}</h1>
-            <h1>{{ product.name }}</h1>
-            <img :src="product.image" :alt="product.alt">
-            <h1>{{ product.text_head }}</h1>
-            <div>
-                <h1>FEATURES</h1>
-                <h1>{{ product.features.feature_A }}</h1>
-                <h1>{{ product.features.feature_B }}</h1>
+
+        <div class="w-9/12 mx-auto mt-20">
+
+            <button @click="goBack" class="py-4">Go Back</button>
+            <div class="flex mb-20">
+                <div class="hp-img-1 lg:w-5/12 w-6/12">
+                    <img :src="product.image" :alt="product.alt" class="xx99">
+                </div>
+                <div class="lg:w-5/12 w-6/12">
+                    <h1 v-show="product.new_product = true" class="new-text">NEW PRODUCT</h1>
+                    <h1 class="headphones-text text-black">{{ product.name }}</h1>
+                    <p class="headphones-desc">{{ product.text_head }}</p>
+                    <h1 class="py-6 font-bold">{{ product.unit_price }}</h1>
+
+                    <div class="flex items-center">
+                        <div>
+                            <span class="amount-control">
+                                <button @click="decrease_NOI" class="pl-3">-</button>
+                                <span id="numb">{{ number_of_item }}</span>
+                                <button @click="increase_NOI" class="pr-3">+</button>
+                            </span>
+                        </div>
+
+                        <div>
+                            <Button text="ADD TO CART" bgcolor="#D97E4A" textColor="hsl(0, 0%, 98%)"/>
+                        </div>
+                    </div>
+                        
+                </div>
             </div>
-            <!-- <div>
-                <h1>IN THE BOX</h1>
-                <p>{{ product.in_the_box.f1 }}</p>
-                <p>{{ product.in_the_box.f2 }}</p>
-                <p>{{ product.in_the_box.f3 }}</p>
-                <p>{{ product.in_the_box.f4 }}</p>
-                <p>{{ product.in_the_box.f5 }}</p>
-            </div> -->
-            <div>
-                <img :src="product.display_image.image_1" >
-                <img :src="product.display_image.image_2" >
-                <img :src="product.display_image.image_3" >
+
+
+            <div class="flex justify-between items-start">
+                <div class="w-7/12">
+                    <h1 class="sub-headers">FEATURES</h1>
+                    <h1 class="phones-desc pb-5">{{ product.features.feature_A }}</h1>
+                    <h1 class="phones-desc">{{ product.features.feature_B }}</h1>
+                </div>
+                <div class="w-4/12 size-text">
+                    <h1 class="sub-headers">IN THE BOX</h1>
+                    <p><span class="size-x">{{ product.in_the_box.f1.size }}</span>  <span class="text-x">{{ product.in_the_box.f1.text }}</span></p>
+                    <p><span class="size-x">{{ product.in_the_box.f2.size }}</span>  <span class="text-x">{{ product.in_the_box.f2.text }}</span></p>
+                    <p><span class="size-x">{{ product.in_the_box.f3.size }}</span>  <span class="text-x">{{ product.in_the_box.f3.text }}</span></p>
+                    <p><span class="size-x">{{ product.in_the_box.f4.size }}</span>  <span class="text-x">{{ product.in_the_box.f4.text }}</span></p>
+                    <p><span class="size-x">{{ product.in_the_box.f5.size }}</span>  <span class="text-x">{{ product.in_the_box.f5.text }}</span></p>
+                </div> 
             </div>
+
+            <div class="display-products my-16">
+                <div class="flex flex-col justify-between">
+                    <img class="img-1" :src="product.display_image.image_1" >
+                    <img class="img-2 mt-8" :src="product.display_image.image_2" >
+                </div>
+                <img class="img-3" :src="product.display_image.image_3" >
+            </div>
+
+            
         </div>
-        <div v-else>
-            Loading...
-        </div>
+
          
 
         <!-- <div class="mt-96"></div>
@@ -58,14 +89,8 @@ export default {
     data() {
         return {
             id: this.$route.params.id,
-           
-            // products: [{}],
-            product:{
-                     name:'',
-                     image:'',
-                     text:'',
-                     features:'',
-                 },
+            product:{},
+            number_of_item:0,
         }
     },
 
@@ -78,11 +103,69 @@ export default {
         });
          
     },
-     
+     methods: {
+         goBack() {
+             this.$router.back()
+         },
+         
+         decrease_NOI() {
+             this.number_of_item--
+             console.log('down')
+         },
+         increase_NOI() {
+             this.number_of_item++
+             console.log('up')
+         }
+     }
      
 }
 </script>
 
 <style>
 
+.img-1{
+    border-radius: 10px;
+}
+.img-2{
+    border-radius: 10px;
+}
+.img-3{
+    border-radius: 10px;
+}
+
+.display-products {
+    display: grid;
+    grid-template-columns: 445px 635px;
+    grid-template-rows: 280px 280px;
+    column-gap: 32px;
+}
+.sub-headers {
+    font-weight: 700;
+    font-size: 31px;
+    padding-bottom: 10px;
+}
+.amount-control {
+    background: hsl(0, 0%, 95%);
+    padding: 0.75rem 4px;
+}
+#numb{
+    padding:0 30px 0 30px;
+}
+.size-x {
+    font-weight: 500;
+    color:rgb(255, 145, 0);
+    padding-right:16px;
+}
+.size-text {
+    line-height:35px ;
+}
+.text-x {
+    color:black;
+    opacity: 0.6;
+}
+
+.phones-desc {
+    color:black;
+    opacity: 0.6;
+}
 </style>

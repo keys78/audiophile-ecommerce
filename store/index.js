@@ -1,4 +1,8 @@
 import Vuex from 'vuex'
+import product_image from '../assets/images/category-headphones/desktop/image-xx99-mark-two.jpg'
+import headphone_gallery1 from '../assets/images/product-xx99-mark-two-headphones/desktop/image-gallery-1.jpg'
+import headphone_gallery2 from '../assets/images/product-xx99-mark-two-headphones/desktop/image-gallery-2.jpg'
+import headphone_gallery3 from '../assets/images/product-xx99-mark-two-headphones/desktop/image-gallery-3.jpg'
 
 
 const createStore = () => {
@@ -9,7 +13,7 @@ const createStore = () => {
           "id":1,
           "new_product":true,
           "name":"XX99 MARK II HEADPHONES",
-          "image":"../assets/images/category-headphones/desktop/image-xx99-mark-two.jpg",
+          "image":product_image,
           "alt":"xx99 mark II heaphones",
           "text_head":"The new XX99 Mark II headphones is the pinnacle of pristine audio. It redefines your premium headphone experience by reproducing the balanced depth and precision of studio-quality sound.",
           "unit_price":"$2,999.00",
@@ -25,9 +29,9 @@ const createStore = () => {
               "f5":{"size":"1x", "text":"Travel bag"}
           },
           "display_image": {
-              "image_1":"../assets/images/category-headphones/desktop/image-xx99-mark-two.jpg",
-              "image_2":"../assets/images/category-headphones/desktop/image-xx99-mark-two.jpg",
-              "image_3":"../assets/images/category-headphones/desktop/image-xx99-mark-two.jpg"
+            "image_1":headphone_gallery1,
+            "image_2":headphone_gallery2,
+            "image_3":headphone_gallery3
           }
       },
         {
@@ -50,9 +54,9 @@ const createStore = () => {
               "f5":{"size":"1x", "text":"Travel bag"}
           },
           "display_image": {
-              "image_1":"../assets/images/category-headphones/desktop/image-xx99-mark-two.jpg",
-              "image_2":"../assets/images/category-headphones/desktop/image-xx99-mark-two.jpg",
-              "image_3":"../assets/images/category-headphones/desktop/image-xx99-mark-two.jpg"
+              "image_1":headphone_gallery1,
+              "image_2":headphone_gallery2,
+              "image_3":headphone_gallery3
           }
       },
       ]

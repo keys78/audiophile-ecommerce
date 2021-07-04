@@ -4,15 +4,10 @@
         <div class="sub-hero">
             <h1>HEADPHONES</h1>
         </div>
-   
-        <div v-for="product in products" :key="product.id">
-            <p>{{ product.name }}</p>
-            <p>{{ product.name }}</p>
-        </div>
 
         <section class="xl:w-9/12 w-11/12 mx-auto mt-32 mb-60">
             <div class="flex">
-                <div class="lg:w-4/12 w-5/12">
+                <div class="lg:w-5/12 w-6/12">
                     <h1 class="new-text">NEW PRODUCT</h1>
                     <h1 class="headphones-text text-black">XX99 MARK TWO HEADPHONES</h1>
                     <p class="headphones-desc">The new XX99 Mark II headphones is the pinnacle of pristine audio. It redefines your premium headphone experience by reproducing the balanced depth and precision of studio-quality sound.</p>
@@ -20,7 +15,7 @@
                         <Button text="SEE PRODUCT" bgcolor="#D97E4A" textColor="hsl(0, 0%, 98%)"/>
                     </NuxtLink>
                 </div>
-                <div class="hp-img-1 lg:w-5/12 w-6/12">
+                <div class="hp-img-1 lg:w-6/12 w-7/12">
                     <img :src="xx99" alt="headphones" class="xx99">
                 </div>
             </div>
@@ -73,7 +68,7 @@ import xx99 from '../assets/images/category-headphones/desktop/image-xx99-mark-t
 import xx991 from '../assets/images/category-headphones/desktop/image-xx99-mark-one.jpg'
 import xx59 from '../assets/images/category-headphones/desktop/image-xx59.jpg'
 
-import { mapState, mapActions } from 'vuex'
+import { mapState } from 'vuex'
 
 export default {
     name:"Headphones",
