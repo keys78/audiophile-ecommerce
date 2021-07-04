@@ -1,0 +1,33 @@
+import Vuex from 'vuex'
+import axios from 'axios'
+
+const createStore = () => {
+  return new Vuex.Store({
+    state: {
+      products: []
+    },
+
+    mutations: {
+     SET_PRODUCTS (state, products) {
+       state.products = products
+     }
+    },
+    
+    getters: {
+
+    },
+
+    actions: {
+      getProducts ({ commit }) {
+      axios.get('./db.json/')
+      .then(response => {
+          commit('SET_PRODUCTS', response.data)
+          console.log(response.data)
+      })
+      .catch(error => console.log(error))
+    }
+  },
+
+ })
+}
+export default createStore

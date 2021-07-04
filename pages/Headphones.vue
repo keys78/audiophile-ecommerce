@@ -4,15 +4,12 @@
         <div class="sub-hero">
             <h1>HEADPHONES</h1>
         </div>
-
-        
-    
-        <div v-for="product in products" :key="product">
-            <p class="text-red-500 text-4xl">gfredffgg</p>
-            {{  product.name }}
+   
+        <div v-for="product in products" :key="product.id">
+            <p>{{ product.name }}</p>
+            <p>{{ product.name }}</p>
         </div>
 
-        
         <section class="xl:w-9/12 w-11/12 mx-auto mt-32 mb-60">
             <div class="flex">
                 <div class="lg:w-4/12 w-5/12">
@@ -76,6 +73,8 @@ import xx99 from '../assets/images/category-headphones/desktop/image-xx99-mark-t
 import xx991 from '../assets/images/category-headphones/desktop/image-xx99-mark-one.jpg'
 import xx59 from '../assets/images/category-headphones/desktop/image-xx59.jpg'
 
+import { mapState, mapActions } from 'vuex'
+
 export default {
     name:"Headphones",
      beforeMount() {
@@ -90,17 +89,10 @@ export default {
             xx99,
             xx991,
             xx59,
-        //      products: [
-        //     {id:1, name:'yx1 phone', text:"Best in earphones lormem", features: 'ytmkfs'},
-        //     {id:2, name:'Qp7 speaker', text:"Best speakers", features: 'dacdscwfdsascd'},
-        //     {id:3, name:'AAA head', text:"Best in headphones", features: 'adfrwsdtrytuyi'}
-        // ]
         }
     },
     computed: {
-         products() {
-             return this.$store.state.products;
-         }
+         ...mapState(['products'])
      }
 }
 </script>
