@@ -4,7 +4,7 @@
 
         <div class="w-9/12 mx-auto mt-20">
 
-            <button @click="goBack" class="py-4">Go Back</button>
+            <button @click="goBack" class="py-4"> Go Back</button>
             <div class="flex mb-20">
                 <div class="hp-img-1 lg:w-5/12 w-6/12">
                     <img :src="product.image" :alt="product.alt" class="xx99">
@@ -57,15 +57,25 @@
                 <img class="img-3" :src="product.display_image.image_3" >
             </div>
 
-            
+            <div>
+                <div class="sub-headers mx-auto">YOU MAY ALSO LIKE </div>
+                <NuxtLink :to="{name: 'ProductDetails', params: { id:2 }}">
+                    <Button text="SEE PRODUCT" bgcolor="#D97E4A" textColor="hsl(0, 0%, 98%)"/>
+                </NuxtLink>
+                <NuxtLink :to="{name: 'ProductDetails', params: { id:3 }}">
+                    <Button text="SEE PRODUCT" bgcolor="#D97E4A" textColor="hsl(0, 0%, 98%)"/>
+                </NuxtLink>
+            </div>
+
+
         </div>
 
          
 
-        <!-- <div class="mt-96"></div>
+        <div class="mt-96"></div>
         <ProductType />
         <Villian />
-        <Footer /> -->
+        <Footer />
     </section>
 </template>
 
@@ -90,7 +100,7 @@ export default {
         return {
             id: this.$route.params.id,
             product:{},
-            number_of_item:0,
+            number_of_item:1,
         }
     },
 
@@ -110,11 +120,10 @@ export default {
          
          decrease_NOI() {
              this.number_of_item--
-             console.log('down')
          },
+
          increase_NOI() {
              this.number_of_item++
-             console.log('up')
          }
      }
      
@@ -137,7 +146,7 @@ export default {
     display: grid;
     grid-template-columns: 445px 635px;
     grid-template-rows: 280px 280px;
-    column-gap: 32px;
+    column-gap: 27px;
 }
 .sub-headers {
     font-weight: 700;

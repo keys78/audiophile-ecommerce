@@ -1,11 +1,11 @@
 <template>
   <div>
       <ul>
-          <!-- <li v-for="product in products" :key="product.id"> -->
+          <li v-for="product in products" :key="product.id">
               <NuxtLink :to="{name: 'test2', params: { id:2 }}">
-              <button>ID of 2</button>
+               {{ product.name }}
               </NuxtLink>
-          <!-- </li> -->
+          </li>
       </ul>
       
   </div>
