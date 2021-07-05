@@ -25,7 +25,8 @@
                         </div>
 
                         <div>
-                            <Button text="ADD TO CART" bgcolor="#D97E4A" textColor="hsl(0, 0%, 98%)"/>
+                            <!-- <Button @click="addToCart" text="ADD TO CART" bgcolor="#D97E4A" textColor="hsl(0, 0%, 98%)"/> -->
+                            <button @click="addToCart">add</button>
                         </div>
                     </div>
                         
@@ -49,7 +50,7 @@
                 </div> 
             </div>
 
-            <div class="display-products my-16">
+            <div class="display-products my-20">
                 <div class="flex flex-col justify-between">
                     <img class="img-1" :src="product.display_image.image_1" >
                     <img class="img-2 mt-8" :src="product.display_image.image_2" >
@@ -58,8 +59,11 @@
             </div>
 
             <div>
-                <div class="sub-headers mx-auto">YOU MAY ALSO LIKE </div>
+                <div class="sub-headers text-center">YOU MAY ALSO LIKE </div>
                 <NuxtLink :to="{name: 'ProductDetails', params: { id:2 }}">
+                    <Button text="SEE PRODUCT" bgcolor="#D97E4A" textColor="hsl(0, 0%, 98%)"/>
+                </NuxtLink>
+                <NuxtLink :to="{name: 'ProductDetails', params: { id:3 }}">
                     <Button text="SEE PRODUCT" bgcolor="#D97E4A" textColor="hsl(0, 0%, 98%)"/>
                 </NuxtLink>
                 <NuxtLink :to="{name: 'ProductDetails', params: { id:3 }}">
@@ -72,7 +76,7 @@
 
          
 
-        <div class="mt-96"></div>
+        <div class="mt-80"></div>
         <ProductType />
         <Villian />
         <Footer />
@@ -101,30 +105,44 @@ export default {
             id: this.$route.params.id,
             product:{},
             number_of_item:1,
+            carts:[]
         }
     },
 
     beforeMount() {
+        // localStorage.setItem('carts', JSON.stringify(this.carts))
        this.products = JSON.parse(localStorage.getItem('products'))
         this.products.forEach(product => {
             if(product.id === this.id) { 
                 this.product = product                
             }
         });
+
+        this.carts = JSON.parse(localStorage.getItem('carts'))
          
     },
      methods: {
          goBack() {
-             this.$router.back()
+            this.$router.back()
          },
          
          decrease_NOI() {
-             this.number_of_item--
+            this.number_of_item--
          },
 
          increase_NOI() {
-             this.number_of_item++
+            this.number_of_item++
+         },
+
+         addToCart() {
+            if(this.carts.includes(this.id)) {
+                return true
+            }else {
+                alert('Item already In Cart')
+                return false
+            }
          }
+         
      }
      
 }

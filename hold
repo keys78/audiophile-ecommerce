@@ -31,3 +31,13 @@ const createStore = () => {
  })
 }
 export default createStore
+
+
+this.cart = ({
+                id:this.id,
+                image:this.product.image,
+                cart_name:this.product.cart_name,
+                unit_price:this.product.unit_price
+            })
+            this.carts.push(this.cart);
+            localStorage.setItem('carts', JSON.stringify(this.carts))

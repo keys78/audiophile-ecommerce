@@ -10,24 +10,35 @@
                 <NuxtLink to="/Earphones"><h2>Earphones</h2></NuxtLink>
                 <!-- <NuxtLink to="/test1"><h2>test1</h2></NuxtLink> -->
             </div>
-            <img :src="CART"/>
+            <img @click="close" :src="cart_logo"/>
+        </div>
+        <div v-if="openCart">
+        <Cart @close="close"/>
         </div>
   </header>
 </template>
 
 <script>
-import CART from '../assets/images/shared/desktop/icon-cart.svg'
+import cart_logo from '../assets/images/shared/desktop/icon-cart.svg'
 import LOGO from '../assets/images/shared/desktop/logo.svg'
+import Cart from '../components/Cart'
 
 export default {
     name: 'Header',
     components: {
-
+        Cart
     },
     data() {
         return {
-            CART,
-            LOGO
+            cart_logo,
+            LOGO,
+            openCart:false,
+        }
+    },
+    
+    methods: {
+        close() {
+            this.openCart = !this.openCart
         }
     }
 }
@@ -46,6 +57,11 @@ header h2{
    text-transform: uppercase;
    font-weight: 600;
 }
+
+header img{
+   cursor: pointer;
+}
+
 header h2:hover{
    color:#D97E4A;
    transition: 0.2s ease-out;
