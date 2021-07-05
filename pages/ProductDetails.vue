@@ -26,7 +26,7 @@
 
                         <div>
                             <!-- <Button @click="addToCart" text="ADD TO CART" bgcolor="#D97E4A" textColor="hsl(0, 0%, 98%)"/> -->
-                            <button @click="addToCart">add</button>
+                            <button @click="addToCart">{{ product.add_to_cart_btn }}</button>
                         </div>
                     </div>
                         
@@ -105,7 +105,7 @@ export default {
             id: this.$route.params.id,
             product:{},
             number_of_item:1,
-            carts:[]
+            carts:[],
         }
     },
 
@@ -135,12 +135,36 @@ export default {
          },
 
          addToCart() {
-            if(this.carts.includes(this.id)) {
-                return true
-            }else {
-                alert('Item already In Cart')
-                return false
-            }
+            // if(this.carts = []) {
+            this.cart = ({
+                id:this.id,
+                image:this.product.image,
+                cart_name:this.product.cart_name,
+                unit_price:this.product.unit_price,
+                
+            })
+            this.product.add_to_cart_btn = "ADDED TO CART"
+            
+            this.carts.push(this.cart);
+            localStorage.setItem('carts', JSON.stringify(this.carts))
+            localStorage.setItem('products', JSON.stringify(this.products))
+            // }else {
+                // alert('Item already In Cart')
+            // }
+            // const fruits = this.carts
+
+            //     function checkAvailability(arr, val) {
+            //     return arr.some(arrVal => val === arrVal);
+            //     }
+
+
+
+
+
+
+            //     console.log(checkAvailability(fruits, XX99 MARK TWO HEADPHONES));   // false
+            //     console.log(checkAvailability(fruits, id = 2)); // true
+                
          }
          
      }
