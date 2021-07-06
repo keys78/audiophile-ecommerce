@@ -13,13 +13,13 @@
                     <h1 v-show="product.new_product = true" class="new-text">NEW PRODUCT</h1>
                     <h1 class="headphones-text text-black">{{ product.name }}</h1>
                     <p class="headphones-desc">{{ product.text_head }}</p>
-                    <h1 class="py-6 font-bold">{{ product.unit_price }}</h1>
+                    <h1 class="py-6 font-bold">${{ product.unit_price }}</h1>
 
                     <div class="flex items-center">
                         <div>
                             <span class="amount-control">
                                 <button @click="decrease_NOI" class="pl-3">-</button>
-                                <span id="numb">{{ number_of_item }}</span>
+                                <span id="numb">{{ item_quantity }}</span>
                                 <button @click="increase_NOI" class="pr-3">+</button>
                             </span>
                         </div>
@@ -104,13 +104,14 @@ export default {
         return {
             id: this.$route.params.id,
             product:{},
-            number_of_item:1,
-            carts:[],
+            item_quantity:1,
+            carts:[{
+                item:{}
+            }],
         }
     },
 
     beforeMount() {
-        // localStorage.setItem('carts', JSON.stringify(this.carts))
        this.products = JSON.parse(localStorage.getItem('products'))
         this.products.forEach(product => {
             if(product.id === this.id) { 
@@ -127,16 +128,15 @@ export default {
          },
          
          decrease_NOI() {
-            this.number_of_item--
+            this.item_quantity--
          },
 
          increase_NOI() {
-            this.number_of_item++
+            this.item_quantity++
          },
 
          addToCart() {
-            // if(this.carts = []) {
-            this.cart = ({
+                this.cart = ({
                 id:this.id,
                 image:this.product.image,
                 cart_name:this.product.cart_name,
@@ -145,26 +145,14 @@ export default {
             })
             this.product.add_to_cart_btn = "ADDED TO CART"
             
-            this.carts.push(this.cart);
-            localStorage.setItem('carts', JSON.stringify(this.carts))
-            localStorage.setItem('products', JSON.stringify(this.products))
-            // }else {
-                // alert('Item already In Cart')
-            // }
-            // const fruits = this.carts
-
-            //     function checkAvailability(arr, val) {
-            //     return arr.some(arrVal => val === arrVal);
-            //     }
-
-
-
-
-
-
-            //     console.log(checkAvailability(fruits, XX99 MARK TWO HEADPHONES));   // false
-            //     console.log(checkAvailability(fruits, id = 2)); // true
-                
+          
+             if(this.carts.find(cart => cart.id === this.id)) {
+                alert('Item already In Cart')
+            }else {
+                this.carts.push(this.cart);
+                localStorage.setItem('carts', JSON.stringify(this.carts))
+            }
+         
          }
          
      }

@@ -15,18 +15,23 @@
                         </div>
                         <div>
                             <h1>{{ item.cart_name }}</h1>
-                            <h1 class="font-bold">{{ item.unit_price }}</h1>
+                            <h1 class="font-bold">${{ item.unit_price }}</h1>
                         </div>
-                        <!-- <div>
+                        <div>
                             <span class="amount-control">
                                 <button @click="decrease_NOI" class="pl-3">-</button>
-                                <span id="numb">{{ number_of_item }}</span>
+                                <span id="numb">{{ item_quantity }}</span>
                                 <button @click="increase_NOI" class="pr-3">+</button>
                             </span>
-                        </div> -->
+                        </div>
+                       
+                       <div>subT: {{ total }}</div>
                         
                     </div>
-                    
+                    <div class="flex justify-between">
+                        <h1>Total</h1>
+                        <!-- <h1>{{ sumOfTotals }}</h1> -->
+                    </div>
                     <button>{{ cart_button_text }}</button>
                 </div>
             </div>
@@ -43,9 +48,10 @@ export default {
     },
     data() {
         return {
-            no_of_items:0,
+            item_quantity:0,
             cart_button_text:"",
             item:{},
+            total:''
         }
     },
     beforeMount() {
@@ -63,9 +69,25 @@ export default {
             this.carts = []
             localStorage.setItem('carts', JSON.stringify(this.carts))
             window.location.reload();
-            
-          
-        }
+        },
+
+         decrease_NOI() {
+            this.item_quantity--
+         },
+
+         increase_NOI() {
+            this.item_quantity++
+         },
+    },
+
+     computed: {
+         total() {
+        let total = 0
+        this.cart.forEach(item => {
+            total += item_quantity*item.unit_price
+        })
+        return total
+    }
     }
 }
 </script>
