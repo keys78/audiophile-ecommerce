@@ -10,7 +10,7 @@
                 <NuxtLink to="/Earphones"><h2>Earphones</h2></NuxtLink>
                 <!-- <NuxtLink to="/test1"><h2>test1</h2></NuxtLink> -->
             </div>
-            <img @click="close" :src="cart_logo"/>
+            <div class="tex-white"><img @click="close" :src="cart_logo"/>{{ this.carts.length }}</div>
         </div>
         <div v-if="openCart">
         <Cart @close="close"/>
@@ -40,6 +40,9 @@ export default {
         close() {
             this.openCart = !this.openCart
         }
+    },
+    beforeMount() {
+        this.carts = JSON.parse(localStorage.getItem('carts'))
     }
 }
 </script>

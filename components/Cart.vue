@@ -15,17 +15,21 @@
                         </div>
                         <div>
                             <h1>{{ item.cart_name }}</h1>
-                            <h1 class="font-bold">${{ item.unit_price }}</h1>
+                            <!-- <h1 class="font-bold">${{ item.unit_price }}</h1> -->
+                            <input type="text" v-model="item.unit_price" />
                         </div>
                         <div>
-                            <span class="amount-control">
-                                <button @click="decrease_NOI" class="pl-3">-</button>
-                                <span id="numb">{{ item_quantity }}</span>
-                                <button @click="increase_NOI" class="pr-3">+</button>
+                            <span class="">
+                                <button @click="decrease_NOI" class="">-</button>
+                                <!-- <span id="">{{ item_quantity }}</span> -->
+                                <input type="text" v-model="item_quantity" />
+                                <button @click="increase_NOI" class="">+</button>
                             </span>
                         </div>
+
+                        <div>{{ item.single_item_total = item_quantity*item.unit_price }}</div>
                        
-                       <div>subT: {{ total }}</div>
+                       <!-- <div>subT: {{ total }}</div> -->
                         
                     </div>
                     <div class="flex justify-between">
@@ -48,7 +52,7 @@ export default {
     },
     data() {
         return {
-            item_quantity:0,
+            item_quantity:'',
             cart_button_text:"",
             item:{},
             total:''
@@ -80,15 +84,15 @@ export default {
          },
     },
 
-     computed: {
-         total() {
-        let total = 0
-        this.cart.forEach(item => {
-            total += item_quantity*item.unit_price
-        })
-        return total
-    }
-    }
+    //  computed: {
+    //      total() {
+    //     let total = 0
+    //     this.cart.forEach(item => {
+    //         total += item_quantity*item.unit_price
+    //     })
+    //     return total
+    // }
+    // }
 }
 </script>
 

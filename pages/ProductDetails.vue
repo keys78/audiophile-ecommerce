@@ -141,6 +141,7 @@ export default {
                 image:this.product.image,
                 cart_name:this.product.cart_name,
                 unit_price:this.product.unit_price,
+                single_item_total:0
                 
             })
             this.product.add_to_cart_btn = "ADDED TO CART"

@@ -29,7 +29,7 @@ const createStore = () => {
           "image":product_image_mark_two,
           "alt":"xx99 mark II heaphones",
           "text_head":"The new XX99 Mark II headphones is the pinnacle of pristine audio. It redefines your premium headphone experience by reproducing the balanced depth and precision of studio-quality sound.",
-          "unit_price":"2,999.00",
+          "unit_price":"299900",
           "add_to_cart_btn":"ADD TO CART",
           "features":{
               "feature_A":"Featuring a genuine leather head strap and premium earcups, these headphones deliver superior comfort for those who like to enjoy endless listening. It includes intuitive controls designed for any situation. Whether you’re taking a business call or just in your own personal space, the auto on/off and pause features ensure that you’ll never miss a beat.",
