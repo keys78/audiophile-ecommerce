@@ -13,14 +13,14 @@
                     <h1 v-show="product.new_product = true" class="new-text">NEW PRODUCT</h1>
                     <h1 class="headphones-text text-black">{{ product.name }}</h1>
                     <p class="headphones-desc">{{ product.text_head }}</p>
-                    <h1 class="py-6 font-bold">${{ product.unit_price }}</h1>
+                    <h1 class="py-6 font-bold">$ {{ product.unit_price.toFixed(2) }}</h1>
 
                     <div class="flex items-center">
                         <div>
                             <span class="amount-control">
-                                <button @click="decrease_NOI" class="pl-3">-</button>
-                                <span id="numb">{{ item_quantity }}</span>
-                                <button @click="increase_NOI" class="pr-3">+</button>
+                                <button @click="decrease_amount" class="pl-3">-</button>
+                                <span id="numb">{{ product.amount }}</span>
+                                <button @click="increase_amount" class="pr-3">+</button>
                             </span>
                         </div>
 
@@ -104,7 +104,6 @@ export default {
         return {
             id: this.$route.params.id,
             product:{},
-            item_quantity:1,
             carts:[{
                 item:{}
             }],
@@ -127,12 +126,14 @@ export default {
             this.$router.back()
          },
          
-         decrease_NOI() {
-            this.item_quantity--
+         decrease_amount() {
+            this.product.amount--
+            localStorage.setItem('products', JSON.stringify(this.products))
          },
 
-         increase_NOI() {
-            this.item_quantity++
+         increase_amount() {
+            this.product.amount++
+            localStorage.setItem('products', JSON.stringify(this.products))
          },
 
          addToCart() {
@@ -141,7 +142,7 @@ export default {
                 image:this.product.image,
                 cart_name:this.product.cart_name,
                 unit_price:this.product.unit_price,
-                single_item_total:0
+                amount:this.product.amount
                 
             })
             this.product.add_to_cart_btn = "ADDED TO CART"

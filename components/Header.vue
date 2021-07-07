@@ -10,7 +10,7 @@
                 <NuxtLink to="/Earphones"><h2>Earphones</h2></NuxtLink>
                 <!-- <NuxtLink to="/test1"><h2>test1</h2></NuxtLink> -->
             </div>
-            <div class="tex-white"><img @click="close" :src="cart_logo"/>{{ this.carts.length }}</div>
+            <div class="tex-white"><img @click="close" :src="cart_logo"/>{{  }}</div>
         </div>
         <div v-if="openCart">
         <Cart @close="close"/>

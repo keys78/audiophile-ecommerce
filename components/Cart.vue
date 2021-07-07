@@ -16,25 +16,24 @@
                         <div>
                             <h1>{{ item.cart_name }}</h1>
                             <!-- <h1 class="font-bold">${{ item.unit_price }}</h1> -->
-                            <input type="text" v-model="item.unit_price" />
+                            <div>${{ item.unit_price.toFixed(2) }}</div>
                         </div>
                         <div>
                             <span class="">
-                                <button @click="decrease_NOI" class="">-</button>
+                                <button @click="decrease_amount" class="">-</button>
                                 <!-- <span id="">{{ item_quantity }}</span> -->
-                                <input type="text" v-model="item_quantity" />
-                                <button @click="increase_NOI" class="">+</button>
+                                <div>{{ item.amount }}</div>
+                                <button @click="increase_amount" class="">+</button>
                             </span>
                         </div>
 
-                        <div>{{ item.single_item_total = item_quantity*item.unit_price }}</div>
-                       
-                       <!-- <div>subT: {{ total }}</div> -->
+                        <div>$ {{ item.single_item_total = item.amount*item.unit_price }}</div>
+                    
                         
                     </div>
                     <div class="flex justify-between">
                         <h1>Total</h1>
-                        <!-- <h1>{{ sumOfTotals }}</h1> -->
+                        <!-- <h1>{{ calTotals }}</h1> -->
                     </div>
                     <button>{{ cart_button_text }}</button>
                 </div>
@@ -52,7 +51,6 @@ export default {
     },
     data() {
         return {
-            item_quantity:'',
             cart_button_text:"",
             item:{},
             total:''
@@ -75,24 +73,36 @@ export default {
             window.location.reload();
         },
 
-         decrease_NOI() {
+         decrease_amount() {
             this.item_quantity--
+            localStorage.setItem('carts', JSON.stringify(this.carts))
          },
 
-         increase_NOI() {
+         increase_amount() {
             this.item_quantity++
+            localStorage.setItem('carts', JSON.stringify(this.carts))
          },
     },
 
     //  computed: {
-    //      total() {
+    //      calTotal() {
     //     let total = 0
-    //     this.cart.forEach(item => {
-    //         total += item_quantity*item.unit_price
+    //     this.cart.forEach(x => {
+    //         total += x.item_quantity*x.item.unit_price
     //     })
     //     return total
     // }
     // }
+//     computed: {
+//  calcSum(){
+//   let total = 0;
+//   this.cartData.forEach((item, i) => {
+//        total += item.price * item.qty;
+//   });
+//   return total;
+//  }
+
+// }
 }
 </script>
 
