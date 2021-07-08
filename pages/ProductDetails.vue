@@ -18,9 +18,9 @@
                     <div class="flex items-center">
                         <div>
                             <span class="amount-control">
-                                <button @click="decrease_amount" class="pl-3">-</button>
-                                <span id="numb">{{ product.amount }}</span>
-                                <button @click="increase_amount" class="pr-3">+</button>
+                                <button @click="decrease_quantity" class="pl-3">-</button>
+                                <span id="numb">{{ product.quantity }}</span>
+                                <button @click="increase_quantity" class="pr-3">+</button>
                             </span>
                         </div>
 
@@ -126,13 +126,13 @@ export default {
             this.$router.back()
          },
          
-         decrease_amount() {
-            this.product.amount--
+         decrease_quantity() {
+            this.product.quantity--
             localStorage.setItem('products', JSON.stringify(this.products))
          },
 
-         increase_amount() {
-            this.product.amount++
+         increase_quantity() {
+            this.product.quantity++
             localStorage.setItem('products', JSON.stringify(this.products))
          },
 
@@ -142,7 +142,7 @@ export default {
                 image:this.product.image,
                 cart_name:this.product.cart_name,
                 unit_price:this.product.unit_price,
-                amount:this.product.amount
+                quantity:this.product.quantity
                 
             })
             this.product.add_to_cart_btn = "ADDED TO CART"

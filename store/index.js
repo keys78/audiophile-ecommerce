@@ -30,7 +30,7 @@ const createStore = () => {
           "alt":"xx99 mark II heaphones",
           "text_head":"The new XX99 Mark II headphones is the pinnacle of pristine audio. It redefines your premium headphone experience by reproducing the balanced depth and precision of studio-quality sound.",
           "unit_price":2999,
-          "amount":1,
+          "quantity":1,
           "add_to_cart_btn":"ADD TO CART",
           "features":{
               "feature_A":"Featuring a genuine leather head strap and premium earcups, these headphones deliver superior comfort for those who like to enjoy endless listening. It includes intuitive controls designed for any situation. Whether you’re taking a business call or just in your own personal space, the auto on/off and pause features ensure that you’ll never miss a beat.",
@@ -58,6 +58,7 @@ const createStore = () => {
           "alt":"xx99 mark I heaphones",
           "text_head":"As the gold standard for headphones, the classic XX99 Mark I offers detailed and accurate audio reproduction for audiophiles, mixing engineers, and music aficionados alike in studios and on the go.",
           "unit_price":"$1,750.00",
+          "quantity":1,
           "add_to_cart_btn":"ADD TO CART",
           "features":{
               "feature_A":"As the headphones all others are measured against, the XX99 Mark I demonstrates over five decades of audio expertise, redefining the critical listening experience. This pair of closed-back headphones are made of industrial, aerospace-grade materials to emphasize durability at a relatively light weight of 11 oz.",
@@ -85,6 +86,7 @@ const createStore = () => {
           "alt":"xx99 mark II heaphones",
           "text_head":"Enjoy your audio almost anywhere and customize it to your specific tastes with the XX59 headphones. The stylish yet durable versatile wireless headset is a brilliant companion at home or on the move.",
           "unit_price":"$899.00",
+          "quantity":1,
           "add_to_cart_btn":"ADD TO CART",
           "features":{
               "feature_A":"These headphones have been created from durable, high-quality materials tough enough to take anywhere. Its compact folding design fuses comfort and minimalist style making it perfect for travel. Flawless transmission is assured by the latest wireless technology engineered for audio synchronization with videos.",

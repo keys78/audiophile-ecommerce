@@ -20,14 +20,14 @@
                         </div>
                         <div>
                             <span class="">
-                                <button @click="decrease_amount" class="">-</button>
+                                <button @click="decrease_quantity" class="">-</button>
                                 <!-- <span id="">{{ item_quantity }}</span> -->
-                                <div>{{ item.amount }}</div>
-                                <button @click="increase_amount" class="">+</button>
+                                <div>{{ item.quantity }}</div>
+                                <button @click="increase_quantity" class="">+</button>
                             </span>
                         </div>
 
-                        <div>$ {{ item.single_item_total = item.amount*item.unit_price }}</div>
+                        <div>$ {{ item.single_item_total = item.quantity*item.unit_price }}</div>
                     
                         
                     </div>
@@ -73,12 +73,12 @@ export default {
             window.location.reload();
         },
 
-         decrease_amount() {
+         decrease_quantity() {
             this.item_quantity--
             localStorage.setItem('carts', JSON.stringify(this.carts))
          },
 
-         increase_amount() {
+         increase_quantity() {
             this.item_quantity++
             localStorage.setItem('carts', JSON.stringify(this.carts))
          },
