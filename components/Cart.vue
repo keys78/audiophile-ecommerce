@@ -59,6 +59,7 @@ export default {
     beforeMount() {
         this.carts = JSON.parse(localStorage.getItem('carts'))
         console.log(this.carts)
+        console.log(this.item.unit_price)
         
     },
 
