@@ -2,7 +2,7 @@
     <section>
         <Header />
 
-        <div v-for="product in filteredPrducts" :key="product.id" class="w-9/12 mx-auto mt-20">
+        <div v-for="product in filteredProducts" :key="product.id" class="w-9/12 mx-auto mt-20">
 
             <button @click="goBack" class="py-4"> Go Back</button>
             <div class="flex mb-20">
@@ -13,8 +13,7 @@
                     <h1 v-show="product.new_product = true" class="new-text">NEW PRODUCT</h1>
                     <h1 class="headphones-text text-black">{{ product.name }}</h1>
                     <p class="headphones-desc">{{ product.text_head }}</p>
-                    <!-- <h1 class="py-6 font-bold">$ {{ product.unit_price.toFixed(2) }}</h1> -->
-                    <h1 class="py-6 font-bold">$ {{ product.unit_price.toLocaleString(undefined, {minimumFractionDigits: 2}) }}</h1>
+                    <h1 class="py-6 font-bold">${{ product.unit_price.toLocaleString(undefined, {minimumFractionDigits: 2}) }}</h1>
 
                     <div class="flex items-center">
                         <div>
@@ -148,7 +147,7 @@ export default {
             product_quantity() {
             return this.$store.getters.productQuantity(this.product)
         },
-            filteredPrducts() {
+            filteredProducts() {
                 return this.products.filter((product) => product.id === this.id)
             }
      }
