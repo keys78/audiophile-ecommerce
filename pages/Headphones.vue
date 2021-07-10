@@ -12,7 +12,7 @@
                         <h1 :class="{'new-product' : !product.new_product }" class="new-text">NEW PRODUCT</h1>
                         <h1 class="headphones-text text-black">{{ product.name }}</h1>
                         <p class="headphones-desc">{{ product.text_head }}</p>
-                        <NuxtLink :to="{name: 'ProductDetails', params: { id:product.id }}">
+                        <NuxtLink :to="{name: 'ProductDetails', params: { id: product.id }}">
                             <Button text="SEE PRODUCT" bgcolor="#D97E4A" textColor="hsl(0, 0%, 98%)"/>
                         </NuxtLink>
                     </div>

@@ -3,39 +3,31 @@
 
             <div class="w-9/12 mx-auto">
                 <div class="cart-container">
-                    <div class="flex justify-between pb-6">
-                        <div>CART ({{ carts.length }})</div>
-                        <div><button @click="deleteCart">Remove all</button></div>
-                    </div>
-                    
+                    <div class="pb-6">
+                        <!-- <div>CART ({{ cart.length }})</div> -->
+                        <div>myTotal: ${{ itemTotal }}</div>
+                        <p id="topo">My Cart({{ cart.length }})</p>
+                        <button @click="clearCart">Remove All</button>
 
-                    <div v-for="(item, index) in carts" :key="index" class="grid grid-cols-3 gap-3 my-4">
-                        <div class="w-16">
-                            <img :src="item.image" :alt="item.alt" class="cart_img">
+                        <div v-if="cart.length">
+                            <div id="lobo" v-for="item in cart" :key="item.id">
+                                <img :src="item.image" alt="" class="w-20">
+                                <p>{{ item.cart_name}}</p>
+                                <p>${{ item.unit_price.toLocaleString(undefined, {minimumFractionDigits: 2}) }}</p>
+                            
+                                <span>
+                                    <button @click="decrease_quantity(item)">-</button>
+                                    <span>{{ item.quantity }}</span>
+                                    <button @click="increase_quantity(item)">+</button>
+                                </span>
+                            
+                            </div>
                         </div>
-                        <div>
-                            <h1>{{ item.cart_name }}</h1>
-                            <!-- <h1 class="font-bold">${{ item.unit_price }}</h1> -->
-                            <div>${{ item.unit_price.toFixed(2) }}</div>
-                        </div>
-                        <div>
-                            <span class="">
-                                <button @click="decrease_quantity" class="">-</button>
-                                <!-- <span id="">{{ item_quantity }}</span> -->
-                                <div>{{ item.quantity }}</div>
-                                <button @click="increase_quantity" class="">+</button>
-                            </span>
+                        <div v-else>
+                            Your Cart Is Empty
                         </div>
 
-                        <div>$ {{ item.single_item_total = item.quantity*item.unit_price }}</div>
-                    
-                        
                     </div>
-                    <div class="flex justify-between">
-                        <h1>Total</h1>
-                        <!-- <h1>{{ calTotals }}</h1> -->
-                    </div>
-                    <button>{{ cart_button_text }}</button>
                 </div>
             </div>
             
@@ -46,64 +38,57 @@
 
 export default {
     name: "Cart",
-    components: {
-      
-    },
+    
     data() {
         return {
-            cart_button_text:"",
-            item:{},
-            total:''
+          
         }
     },
-    beforeMount() {
-        this.carts = JSON.parse(localStorage.getItem('carts'))
-        console.log(this.carts)
-        console.log(this.item.unit_price)
+
+    methods: {
+        decrease_quantity(item) {
+            item.quantity--
+            localStorage.setItem('cart', JSON.stringify(this.cart))
+           
+         },
+
+         increase_quantity(item) {
+            item.quantity++
+            localStorage.setItem('cart', JSON.stringify(this.cart))
+
+         },
+    
+
+
+         clearCart() {
+            if(this.cart.length > 0) {
+                this.cart.length = 0
+                localStorage.setItem('cart', JSON.stringify(this.cart))
+                window.location.reload();
+
+            } else {
+                 alert('cart is empty')
+             }
+        },
         
     },
 
-    // mounted() {
-    //     this.cart.length > 0 ? this.cart_button_text = "SHOP NOW" : this.cart_button_text = "CHECKOUT"
-    // },
-
-    methods: {
-        deleteCart() {
-            this.carts = []
-            localStorage.setItem('carts', JSON.stringify(this.carts))
-            window.location.reload();
+    computed: {
+        cart() {
+            return this.$store.getters.cartItems
         },
-
-         decrease_quantity() {
-            this.item_quantity--
-            localStorage.setItem('carts', JSON.stringify(this.carts))
-         },
-
-         increase_quantity() {
-            this.item_quantity++
-            localStorage.setItem('carts', JSON.stringify(this.carts))
-         },
-    },
-
-    //  computed: {
-    //      calTotal() {
-    //     let total = 0
-    //     this.cart.forEach(x => {
-    //         total += x.item_quantity*x.item.unit_price
-    //     })
-    //     return total
-    // }
-    // }
-//     computed: {
-//  calcSum(){
-//   let total = 0;
-//   this.cartData.forEach((item, i) => {
-//        total += item.price * item.qty;
-//   });
-//   return total;
-//  }
-
-// }
+        
+      
+        itemTotal() {
+            // let total = this.cart.reduce((sum,item) => sum + item.unit_price * item.quantity, 0);
+            // let myTotal = total.toLocaleString(undefined, {minimumFractionDigits: 2})
+            // return myTotal
+            return this.$store.getters.cartTotal
+        }
+            
+        },
+         
+    
 }
 </script>
 

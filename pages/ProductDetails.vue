@@ -61,7 +61,7 @@
 
             <div>
                 <div class="sub-headers text-center">YOU MAY ALSO LIKE </div>
-                <NuxtLink :to="{name: 'ProductDetails', params: { id:2 }}">
+                <!-- <NuxtLink :to="{name: 'ProductDetails', params: { id:2 }}">
                     <Button text="SEE PRODUCT" bgcolor="#D97E4A" textColor="hsl(0, 0%, 98%)"/>
                 </NuxtLink>
                 <NuxtLink :to="{name: 'ProductDetails', params: { id:3 }}">
@@ -69,7 +69,7 @@
                 </NuxtLink>
                 <NuxtLink :to="{name: 'ProductDetails', params: { id:3 }}">
                     <Button text="SEE PRODUCT" bgcolor="#D97E4A" textColor="hsl(0, 0%, 98%)"/>
-                </NuxtLink>
+                </NuxtLink> -->
             </div>
 
 
@@ -89,7 +89,6 @@ import Villian from '../components/Villian.vue'
 import Footer from '../components/Footer.vue'
 import Button from '../components/Button.vue'
 import ProductType from '../components/ProductType.vue'
-import ControlButtons from '../components/ControlButtons.vue'
 
 export default {
     name:"ProductDetails",
@@ -99,7 +98,6 @@ export default {
         Footer,
         Button,
         ProductType,
-        ControlButtons
     },
 
     data() {
@@ -111,11 +109,9 @@ export default {
 
     beforeMount() {
         this.products = JSON.parse(localStorage.getItem('products'))
-        this.products.forEach(product => {
-            if(product.id === this.id) { 
-                this.products = JSON.parse(localStorage.getItem('products'))
-                this.product = product                
-            }
+        
+         this.products.forEach(product => {
+            if(product.id === this.id) { this.product = product }
         });
        
          
