@@ -2,7 +2,7 @@
     <section>
         <Header />
 
-        <div class="w-9/12 mx-auto mt-20">
+        <div v-for="product in products" :key="product.id" class="w-9/12 mx-auto mt-20">
 
             <button @click="goBack" class="py-4"> Go Back</button>
             <div class="flex mb-20">
@@ -13,17 +13,18 @@
                     <h1 v-show="product.new_product = true" class="new-text">NEW PRODUCT</h1>
                     <h1 class="headphones-text text-black">{{ product.name }}</h1>
                     <p class="headphones-desc">{{ product.text_head }}</p>
-                    <h1 class="py-6 font-bold">$ {{ product.unit_price.toFixed(2) }}</h1>
+                    <!-- <h1 class="py-6 font-bold">$ {{ product.unit_price.toFixed(2) }}</h1> -->
+                    <h1 class="py-6 font-bold">$ {{ product.unit_price.toLocaleString(undefined, {minimumFractionDigits: 2}) }}</h1>
 
                     <div class="flex items-center">
                         <div>
                             <span class="amount-control">
                                 <button @click="decrease_quantity" class="pl-3">-</button>
-                                <span id="numb">{{ product.quantity }}</span>
+                                <span v-if="product_quantity" id="numb">{{ product_quantity }}</span>
                                 <button @click="increase_quantity" class="pr-3">+</button>
                             </span>
                         </div>
-
+                        
                         <div>
                             <!-- <Button @click="addToCart" text="ADD TO CART" bgcolor="#D97E4A" textColor="hsl(0, 0%, 98%)"/> -->
                             <button @click="addToCart">{{ product.add_to_cart_btn }}</button>
@@ -75,7 +76,6 @@
         </div>
 
          
-
         <div class="mt-80"></div>
         <ProductType />
         <Villian />
@@ -89,6 +89,7 @@ import Villian from '../components/Villian.vue'
 import Footer from '../components/Footer.vue'
 import Button from '../components/Button.vue'
 import ProductType from '../components/ProductType.vue'
+import ControlButtons from '../components/ControlButtons.vue'
 
 export default {
     name:"ProductDetails",
@@ -98,65 +99,59 @@ export default {
         Footer,
         Button,
         ProductType,
+        ControlButtons
     },
 
     data() {
         return {
             id: this.$route.params.id,
-            product:{},
-            carts:[{
-                item:{}
-            }],
+            // product_quantity:1
         }
     },
 
     beforeMount() {
-       this.products = JSON.parse(localStorage.getItem('products'))
+        this.products = JSON.parse(localStorage.getItem('products'))
         this.products.forEach(product => {
             if(product.id === this.id) { 
+                this.products = JSON.parse(localStorage.getItem('products'))
                 this.product = product                
             }
         });
-
-        this.carts = JSON.parse(localStorage.getItem('carts'))
+       
          
     },
+    // mounted() {
+    //   this.$store.commit('updateCartFromLocalStorage')
+    // },
+ 
      methods: {
          goBack() {
             this.$router.back()
          },
          
          decrease_quantity() {
-            this.product.quantity--
-            localStorage.setItem('products', JSON.stringify(this.products))
+            this.$store.commit('removeFromCart', this.product)
          },
 
          increase_quantity() {
-            this.product.quantity++
-            localStorage.setItem('products', JSON.stringify(this.products))
+            this.$store.commit('increaseQuantity', this.product)
          },
 
          addToCart() {
-                this.cart = ({
-                id:this.id,
-                image:this.product.image,
-                cart_name:this.product.cart_name,
-                unit_price:this.product.unit_price,
-                quantity:this.product.quantity
-                
+            this.$store.commit('addToCart', this.product)
+            this.products.forEach(product => {
+                product.add_to_cart_btn = "IN CART"
             })
-            this.product.add_to_cart_btn = "ADDED TO CART"
             
-          
-             if(this.carts.find(cart => cart.id === this.id)) {
-                alert('Item already In Cart')
-            }else {
-                this.carts.push(this.cart);
-                localStorage.setItem('carts', JSON.stringify(this.carts))
-            }
-         
          }
          
+     },
+
+     computed: {
+            product_quantity() {
+            return this.$store.getters.productQuantity(this.product)
+        },
+            
      }
      
 }
