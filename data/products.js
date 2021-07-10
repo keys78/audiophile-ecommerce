@@ -126,7 +126,7 @@ const products = [
         id:4,
         category:"speakers",
         new_product:false,
-        style:true,  
+        style:false,  
         name:"ZX9 SPEAKER",
         cart_name:"zx9 speaker",
         image:product_image_zx9,
