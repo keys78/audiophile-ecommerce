@@ -2,7 +2,7 @@
     <section>
         <Header />
 
-        <div v-for="product in products" :key="product.id" class="w-9/12 mx-auto mt-20">
+        <div v-for="product in filteredPrducts" :key="product.id" class="w-9/12 mx-auto mt-20">
 
             <button @click="goBack" class="py-4"> Go Back</button>
             <div class="flex mb-20">
@@ -89,6 +89,7 @@ import Villian from '../components/Villian.vue'
 import Footer from '../components/Footer.vue'
 import Button from '../components/Button.vue'
 import ProductType from '../components/ProductType.vue'
+import products from '~/data/products'
 
 export default {
     name:"ProductDetails",
@@ -116,9 +117,9 @@ export default {
        
          
     },
-    // mounted() {
-    //   this.$store.commit('updateCartFromLocalStorage')
-    // },
+    mounted() {
+      this.$store.commit('updateCartFromLocalStorage')
+    },
  
      methods: {
          goBack() {
@@ -147,7 +148,9 @@ export default {
             product_quantity() {
             return this.$store.getters.productQuantity(this.product)
         },
-            
+            filteredPrducts() {
+                return this.products.filter((product) => product.id === this.id)
+            }
      }
      
 }
