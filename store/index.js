@@ -28,13 +28,15 @@ const createStore = () => {
         updateCartFromLocalStorage(state) 
         return state.cart
       },
-      // clearCart: state => {
-      //    state.cart = []
-      //    updateLocalStorage(state.cart)
-      // }
+      
+      cartLength:state => {
+        return state.cart.length
+      },
 
       cartTotal: state => {
-        return state.cart.reduce((sum,item) => sum + item.unit_price * item.quantity, 0);
+        let total = state.cart.reduce((sum,item) => sum + item.unit_price * item.quantity, 0);
+          let myTotal = total.toLocaleString(undefined, {minimumFractionDigits: 2})
+            return myTotal
      },
     },
 
@@ -59,14 +61,13 @@ const createStore = () => {
          if(item) {
           item.quantity++
          } 
-        else {
+         else {
           alert('Add Item To Cart  First')
          }
-
          updateLocalStorage(state.cart)
       },
 
-      removeFromCart (state, product) {
+      decreaseQuantity (state, product) {
         let item = state.cart.find( i => i.id === product.id)
 
         if(item) {
@@ -79,6 +80,34 @@ const createStore = () => {
         updateLocalStorage(state.cart)
       },
 
+      increaseFromCart (state, item) {
+        item.quantity++
+        updateLocalStorage(state.cart)
+      },
+
+
+      decreaseAndRemoveFromCart (state, item) {
+        let itemx = state.cart.find( i => i.id === item.id)
+
+        if(itemx) {
+          if(itemx.quantity > 1) {
+            itemx.quantity--
+          }else {
+            state.cart = state.cart.filter( i => i.id !== item.id)
+          }
+        }
+        updateLocalStorage(state.cart)
+      },
+
+      
+      clearCart: state => {
+         state.cart = []
+         updateLocalStorage(state.cart)
+      },
+
+      updateCartFromLocalStorage(state) {
+        state.cart = JSON.parse(localStorage.getItem('cart'))
+      }
       
     },
 

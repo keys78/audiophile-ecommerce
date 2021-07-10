@@ -16,7 +16,7 @@
 
 </script>
 
-<style scoped>
+<style>
     .hovie:hover{
         transform: scale(0.98);
          opacity: 0.8;

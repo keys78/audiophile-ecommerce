@@ -20,12 +20,13 @@
                             <span class="amount-control">
                                 <button @click="decrease_quantity" class="pl-3">-</button>
                                 <span v-if="product_quantity" id="numb">{{ product_quantity }}</span>
+                                <span v-else id="numb">{{ 1 }}</span>
                                 <button @click="increase_quantity" class="pr-3">+</button>
                             </span>
                         </div>
                         
                         <div>
-                            <!-- <Button @click="addToCart" text="ADD TO CART" bgcolor="#D97E4A" textColor="hsl(0, 0%, 98%)"/> -->
+                            <!-- <Button @click="addToCart" :text="product.add_to_cart_btn" bgcolor="#D97E4A" textColor="hsl(0, 0%, 98%)"/> -->
                             <button @click="addToCart">{{ product.add_to_cart_btn }}</button>
                         </div>
                     </div>
@@ -126,7 +127,7 @@ export default {
          },
          
          decrease_quantity() {
-            this.$store.commit('removeFromCart', this.product)
+            this.$store.commit('decreaseQuantity', this.product)
          },
 
          increase_quantity() {

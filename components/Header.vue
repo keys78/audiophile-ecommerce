@@ -8,9 +8,8 @@
                 <NuxtLink to="/Headphones"><h2>Headphones</h2></NuxtLink>
                 <NuxtLink to="/Speakers"><h2>Speakers</h2></NuxtLink>
                 <NuxtLink to="/Earphones"><h2>Earphones</h2></NuxtLink>
-                <!-- <NuxtLink to="/test1"><h2>test1</h2></NuxtLink> -->
             </div>
-            <div class="tex-white"><img @click="close" :src="cart_logo"/>{{  }}</div>
+            <div class="text-white"><img @click="close" :src="cart_logo"/>{{ myCartLength }}</div>
         </div>
         <div v-if="openCart">
         <Cart @close="close"/>
@@ -41,9 +40,17 @@ export default {
             this.openCart = !this.openCart
         }
     },
+   
     beforeMount() {
-        this.carts = JSON.parse(localStorage.getItem('carts'))
-    }
+        this.cart = JSON.parse(localStorage.getItem('cart'))
+    },
+
+    computed: {
+        myCartLength() {
+            return this.$store.getters.cartLength
+        },
+    },
+ 
 }
 </script>
 

@@ -3,28 +3,36 @@
 
             <div class="w-9/12 mx-auto">
                 <div class="cart-container">
-                    <div class="pb-6">
-                        <!-- <div>CART ({{ cart.length }})</div> -->
-                        <div>myTotal: ${{ itemTotal }}</div>
-                        <p id="topo">My Cart({{ cart.length }})</p>
-                        <button @click="clearCart">Remove All</button>
+                    <div class="pb-3">
+                        <div class="flex">
+                            <div class="font-semibold text-lg">CART ({{ cart.length }})</div>
+                            <button class="clear-cart-btn" @click="clearCart">Remove All</button>
+                        </div>
 
                         <div v-if="cart.length">
-                            <div id="lobo" v-for="item in cart" :key="item.id">
-                                <img :src="item.image" alt="" class="w-20">
-                                <p>{{ item.cart_name}}</p>
-                                <p>${{ item.unit_price.toLocaleString(undefined, {minimumFractionDigits: 2}) }}</p>
-                            
-                                <span>
+                            <div v-for="item in cart" :key="item.id" class="grid grid-cols-3 items-center my-8">
+                                <div><img :src="item.image" :alt="item.alt" class="w-16 cart_img"></div>
+                                <div>
+                                    <p class="font-semibold">{{ item.cart_name}}</p>
+                                    <p class="font-semibold opacity-60">${{ item.unit_price.toLocaleString(undefined, {minimumFractionDigits: 2}) }}</p>
+                                </div>
+                                <div class="control-panel flex">
                                     <button @click="decrease_quantity(item)">-</button>
                                     <span>{{ item.quantity }}</span>
                                     <button @click="increase_quantity(item)">+</button>
-                                </span>
+                                </div>
                             
                             </div>
+                            <div class="flex my-4">
+                                <h1 class="text-lg font-thin">Total</h1>
+                                <div class="font-semibold text-lg">${{ itemTotal }}</div>
+                            </div>
+                            <NuxtLink to="/Checkout"><button class="checkout-btn hovie">CHECKOUT</button></NuxtLink>
                         </div>
                         <div v-else>
-                            Your Cart Is Empty
+                            <img src="https://viacapo.com/wp-content/themes/GoDoCommerceTheme/img/emptycart.gif" alt="" class="mx-auto w-40">
+                            <h1 class="py-8 font-semibold text-center">YOUR CART IS EMPTY</h1>
+                            <NuxtLink to="/"><button class="checkout-btn hovie">SHOP NOW</button></NuxtLink>
                         </div>
 
                     </div>
@@ -46,29 +54,16 @@ export default {
     },
 
     methods: {
-        decrease_quantity(item) {
-            item.quantity--
-            localStorage.setItem('cart', JSON.stringify(this.cart))
-           
+         decrease_quantity(item) {
+            this.$store.commit('decreaseAndRemoveFromCart', item)
          },
 
          increase_quantity(item) {
-            item.quantity++
-            localStorage.setItem('cart', JSON.stringify(this.cart))
-
+           this.$store.commit('increaseFromCart', item)
          },
-    
-
 
          clearCart() {
-            if(this.cart.length > 0) {
-                this.cart.length = 0
-                localStorage.setItem('cart', JSON.stringify(this.cart))
-                window.location.reload();
-
-            } else {
-                 alert('cart is empty')
-             }
+            this.$store.commit('clearCart')
         },
         
     },
@@ -78,18 +73,15 @@ export default {
             return this.$store.getters.cartItems
         },
         
-      
         itemTotal() {
-            // let total = this.cart.reduce((sum,item) => sum + item.unit_price * item.quantity, 0);
-            // let myTotal = total.toLocaleString(undefined, {minimumFractionDigits: 2})
-            // return myTotal
             return this.$store.getters.cartTotal
-        }
-            
         },
+
+    }
+        
          
-    
-}
+}    
+
 </script>
 
 <style>
@@ -115,7 +107,7 @@ export default {
 .cart-container {
     border-radius: 10px;
     float:right;
-    margin-top: 6rem;
+    margin-top: 5rem;
     z-index: 999;
     background:#fff;
     padding: 2rem 1.75rem;
@@ -131,5 +123,41 @@ export default {
 }
 .cart_img {
     border-radius: 10px;
+}
+.checkout-btn{
+    font-weight: 700;
+    font-size: 15px;
+    padding: 10px 15px;
+    width: 100%;
+    background: #D97E4A;
+    color:hsl(0, 0%, 98%);
+}
+
+.checkout-btn:focus{
+    outline: none;
+}
+
+.clear-cart-btn {
+    transition:background 0.2s ease-in all;
+    text-decoration: underline;
+    color:#000;
+}
+.clear-cart-btn:hover {
+   color:#D97E4A;
+   transition:background 0.2s ease-out all;
+}
+.clear-cart-btn:focus {
+    outline: none;
+}
+.control-panel {
+    background: hsl(0, 0%, 95%);
+    padding: 0.42rem 4px;
+    font-weight: 600;
+}
+.control-panel button:nth-child(1) {
+    padding-left: 10px;
+}
+.control-panel button:nth-child(3) {
+    padding-right: 10px;
 }
 </style>
