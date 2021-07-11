@@ -12,7 +12,8 @@ function updateCartFromLocalStorage(state) {
 const createStore = () => {
   return new Vuex.Store({
     state: {
-      cart: []
+      cart: [],
+      userName:'',
     },
 
     getters: {
@@ -31,6 +32,10 @@ const createStore = () => {
       
       cartLength:state => {
         return state.cart.length
+      },
+
+      userName:state => {
+        return state.userName
       },
 
       cartTotal: state => {

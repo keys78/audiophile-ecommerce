@@ -2,11 +2,15 @@
     <section class="checkout-holder">
         <Header class="bg-black"/>
 
+        <div v-if="confirmOrder">
+            <OrderConfirmation />
+        </div>
+
         <section class="w-9/12 mx-auto mb-10">
-            <button @click="goBack" class="mt-20 text-sm opacity-50 font-bold cursor:pointer mb-6"> Go Back</button>
+            <button @click="goBack" class="hover:text-yellow-800 mt-20 text-sm opacity-50 font-bold cursor:pointer mb-6"> Go Back</button>
 
             <div class="flex-start gap-8 checkout-holder">
-                <div class="w-8/12 py-8 px-6 rounded bg-white">
+                <div class="w-8/12 py-8 px-6 rounded-md bg-white">
                     <h1 class="check-group text-2xl">CHECKOUT</h1>
                     <p class="check-text">BILLING DETAILS</p>
 
@@ -15,7 +19,7 @@
                             <div class="grid grid-cols-2 gap-4 py-5">
                                 <div class="">
                                     <label class="check-group text-sm">Name</label>
-                                    <input type="text" placeholder="Aleyx Madom" class="input-group"/>
+                                    <input type="text" v-model="userName" placeholder="Aleyx Madom" class="input-group"/>
                                 </div>
                                 <div>
                                     <label class="check-group text-sm">Email</label>
@@ -91,7 +95,7 @@
                 </div>
 
 
-                <div class="w-4/12 py-6 px-4 rounded-x1 bg-white">
+                <div class="w-4/12 py-6 px-4 rounded-md bg-white">
                     <h1 class="font-semibold text-xl">SUMMARY</h1>
 
                         <div v-if="cart.length">
@@ -120,7 +124,7 @@
                                 <h1 class="text-base font-semibold opacity-50">GRAND TOTAL</h1>
                                 <div class="font-bold text-lg" style="color:#D97E4A;">${{ grandTotal }}</div>
                             </div>
-                            <NuxtLink to="/Checkout"><button class="checkout-btn hovie">CONTINUE & PAY</button></NuxtLink>
+                            <button @click="openConfirmation" class="checkout-btn hovie">CONTINUE & PAY</button>
                         </div>
                         <div v-else>
                             <img src="https://www.nicepng.com/png/full/16-166530_discover-the-coolest-pusheen-gif-no-background.png" alt="" class="mx-auto w-40 mt-10">
@@ -141,12 +145,14 @@
 import Header from '../components/Header.vue'
 import Footer from '../components/Footer.vue'
 import shape from '../assets/images/Shape.png'
+import OrderConfirmation from '../components/OrderConfirmation.vue'
 
 export default {
     name:"Headphones",
     components: {
         Header,
         Footer,
+        OrderConfirmation
     },
 
     data() {
@@ -154,6 +160,8 @@ export default {
             shape,
             e_money_group:true,
             cash_on_delivery_group:false,
+            confirmOrder:false,
+            userName:''
         }
     },
 
@@ -161,14 +169,21 @@ export default {
          goBack() {
             this.$router.back()
          },
+
          e_money() {
             this.e_money_group = true;
             this.cash_on_delivery_group = false;
          },
+
          cash_on_delivery() {
             this.cash_on_delivery_group = true;
             this.e_money_group = false;
-         }
+         },
+
+         openConfirmation() {
+            this.confirmOrder = true
+            this.$store.state.userName = this.userName
+        }
     },
 
      computed: {
@@ -191,7 +206,8 @@ export default {
 
         grandTotal() {
             return this.$store.getters.grandTotal
-        }
+        },
+        
 
     }
 }

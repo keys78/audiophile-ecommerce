@@ -4,7 +4,7 @@
 
         <div v-for="product in filteredProducts" :key="product.id" class="w-9/12 mx-auto mt-20">
 
-            <button @click="goBack" class="py-4"> Go Back</button>
+            <button @click="goBack" class="hover:text-yellow-800 text-sm opacity-50 font-bold cursor:pointer py-4"> Go Back</button>
             <div class="flex mb-20">
                 <div class="hp-img-1 lg:w-5/12 w-6/12">
                     <img :src="product.image" :alt="product.alt" class="xx99">
