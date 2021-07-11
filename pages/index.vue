@@ -154,4 +154,5 @@ export default {
    border-radius: 10px;
    height: 320px;
 }
+
 </style>

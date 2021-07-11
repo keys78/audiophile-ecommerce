@@ -9,7 +9,10 @@
                 <NuxtLink to="/Speakers"><h2>Speakers</h2></NuxtLink>
                 <NuxtLink to="/Earphones"><h2>Earphones</h2></NuxtLink>
             </div>
-            <div class="text-white"><img @click="close" :src="cart_logo"/>{{ myCartLength }}</div>
+            <div class="relative">
+                <img @click="close" :src="cart_logo"/>
+                <span class="counter">{{ myCartLength }}</span>
+            </div>
         </div>
         <div v-if="openCart">
         <Cart @close="close"/>
@@ -85,5 +88,16 @@ header h2:hover{
 .logo {
     font-weight:700;
     font-size: 30px;
+}
+.counter {
+    text-align: center;
+    width: 1.2rem;
+    line-height: 1.2rem;
+    position: absolute;
+    top: -0.5rem;
+    left: 1rem;
+    background-color:rgb(255, 145, 0);
+    border-radius: 50%;
+    font-size: 0.75rem;
 }
 </style>

@@ -19,7 +19,7 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', type:'text/css', href:'/style.css'},
+      { rel: 'stylesheet', type:'text/css', href:'/style.css' },
     ]
   },
 

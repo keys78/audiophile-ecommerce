@@ -61,7 +61,7 @@
 
             <div>
                 <div class="sub-headers text-center">YOU MAY ALSO LIKE </div>
-                <!-- <NuxtLink :to="{name: 'ProductDetails', params: { id:2 }}">
+                <NuxtLink :to="{name: 'ProductDetails', params: { id:2 }}">
                     <Button text="SEE PRODUCT" bgcolor="#D97E4A" textColor="hsl(0, 0%, 98%)"/>
                 </NuxtLink>
                 <NuxtLink :to="{name: 'ProductDetails', params: { id:3 }}">
@@ -69,7 +69,7 @@
                 </NuxtLink>
                 <NuxtLink :to="{name: 'ProductDetails', params: { id:3 }}">
                     <Button text="SEE PRODUCT" bgcolor="#D97E4A" textColor="hsl(0, 0%, 98%)"/>
-                </NuxtLink> -->
+                </NuxtLink>
             </div>
 
 
