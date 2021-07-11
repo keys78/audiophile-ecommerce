@@ -1,12 +1,12 @@
 <template>
-    <section>
+    <section class="checkout-holder">
         <Header class="bg-black"/>
 
         <section class="w-9/12 mx-auto mb-10">
             <button @click="goBack" class="mt-20 text-sm opacity-50 font-bold cursor:pointer mb-6"> Go Back</button>
 
-            <div class="flex-start gap-8 ">
-                <div class="w-8/12 border py-8 px-6 rounded">
+            <div class="flex-start gap-8 checkout-holder">
+                <div class="w-8/12 py-8 px-6 rounded bg-white">
                     <h1 class="check-group text-2xl">CHECKOUT</h1>
                     <p class="check-text">BILLING DETAILS</p>
 
@@ -71,7 +71,7 @@
                                 </div>
                             </div>
                             <!--toggle area-->
-                            <div v-if="e_money_group" class="grid grid-cols-2 gap-4 py-5">
+                            <div v-if="e_money_group" class="grid grid-cols-2 gap-4 py-5 h-28">
                                 <div class="">
                                     <label class="check-group text-sm">E-Money Number</label>
                                     <input type="text" placeholder="400387834" class="input-group"/>
@@ -81,7 +81,7 @@
                                     <input type="text" placeholder="5684" class="input-group"/>
                                 </div>
                             </div>
-                            <div v-if="cash_on_delivery_group" class="grid grid-cols-7 gap-4 py-5 items-center">
+                            <div v-if="cash_on_delivery_group" class="grid grid-cols-7 gap-4 py-5 items-center h-28">
                                 <img :src="shape" alt="icon" class="col-span-1">
                                 <p class="col-span-6 text-sm opacity-60">The ‘Cash on Delivery’ option enables you to pay in cash when our delivery courier arrives at your residence. Just make sure your address is correct so that your order will not be cancelled.</p>
                             </div>
@@ -91,7 +91,7 @@
                 </div>
 
 
-                <div class="w-4/12 py-6 px-4 rounded border">
+                <div class="w-4/12 py-6 px-4 rounded-x1 bg-white">
                     <h1 class="font-semibold text-xl">SUMMARY</h1>
 
                         <div v-if="cart.length">
@@ -101,7 +101,7 @@
                                     <p class="font-semibold">{{ item.cart_name}}</p>
                                     <p class="font-semibold opacity-60">${{ item.unit_price.toLocaleString(undefined, {minimumFractionDigits: 2}) }}</p>
                                 </div>
-                                <div class="check-group col-span-3 text-right"> x{{ item.quantity }} </div>
+                                <div class="check-group col-span-3 opacity-60 text-right"> x{{ item.quantity }} </div>
                             
                             </div>
                             <div class="flex my-4">
@@ -132,7 +132,7 @@
 
         </section>
         
-        <!-- <Footer /> -->
+        <Footer />
     </section>
 </template>
 
@@ -226,6 +226,19 @@ export default {
     ::placeholder{
         color:#929596;
     }
+
+    .checkout-holder{
+        background: hsl(0, 0%, 96%);
+    }
+
+
+
+
+
+
+
+
+
 
     [type="radio"]:checked,
     [type="radio"]:not(:checked) {
