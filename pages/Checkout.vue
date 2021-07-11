@@ -61,17 +61,17 @@
 
                                 <div>
                                    <div class="pb-6 input-group mb-5">
-                                        <input type="radio" id="test1" name="payment-type" checked/>
+                                        <input @click="e_money" type="radio" id="test1" name="payment-type" checked/>
                                         <label class="check-group" for="test1">e-Money</label>
                                     </div>
-                                    <div class="input-group">
+                                    <div @click="cash_on_delivery" class="input-group">
                                         <input type="radio" id="test2" name="payment-type"/>
                                         <label class="check-group" for="test2">Cash on Delivery</label>
                                     </div>
                                 </div>
                             </div>
                             <!--toggle area-->
-                            <div class="grid grid-cols-2 gap-4 py-5">
+                            <div v-if="e_money_group" class="grid grid-cols-2 gap-4 py-5">
                                 <div class="">
                                     <label class="check-group text-sm">E-Money Number</label>
                                     <input type="text" placeholder="400387834" class="input-group"/>
@@ -81,9 +81,9 @@
                                     <input type="text" placeholder="5684" class="input-group"/>
                                 </div>
                             </div>
-                            <div class="grid grid-cols-5 gap-4 py-5 items-center">
+                            <div v-if="cash_on_delivery_group" class="grid grid-cols-7 gap-4 py-5 items-center">
                                 <img :src="shape" alt="icon" class="col-span-1">
-                                <p class="col-span-4">The ‘Cash on Delivery’ option enables you to pay in cash when our delivery courier arrives at your residence. Just make sure your address is correct so that your order will not be cancelled.</p>
+                                <p class="col-span-6 text-sm opacity-60">The ‘Cash on Delivery’ option enables you to pay in cash when our delivery courier arrives at your residence. Just make sure your address is correct so that your order will not be cancelled.</p>
                             </div>
                         </div>
                     </form>
@@ -115,7 +115,9 @@ export default {
 
     data() {
         return {
-            shape
+            shape,
+            e_money_group:true,
+            cash_on_delivery_group:false,
         }
     },
 
@@ -123,6 +125,14 @@ export default {
          goBack() {
             this.$router.back()
          },
+         e_money() {
+            this.e_money_group = true;
+            this.cash_on_delivery_group = false;
+         },
+         cash_on_delivery() {
+            this.cash_on_delivery_group = true;
+            this.e_money_group = false;
+         }
     }
 }
 </script>
