@@ -2,11 +2,11 @@
     <section>
         <Header class="bg-black"/>
 
-        <section class="w-9/12 mx-auto">
-            <button @click="goBack" class="mt-24 text-sm mb-2"> Go Back</button>
+        <section class="w-9/12 mx-auto mb-10">
+            <button @click="goBack" class="mt-20 text-sm opacity-50 font-bold cursor:pointer mb-6"> Go Back</button>
 
             <div class="flex-start gap-8 ">
-                <div class="w-8/12 border py-8 px-6 rounded-xl">
+                <div class="w-8/12 border py-8 px-6 rounded">
                     <h1 class="check-group text-2xl">CHECKOUT</h1>
                     <p class="check-text">BILLING DETAILS</p>
 
@@ -56,7 +56,7 @@
 
                             <div class="grid grid-cols-2 gap-4 py-5">
                                 <div class="">
-                                    <p>Payment Method</p>
+                                    <p class="check-group text-sm">Payment Method</p>
                                 </div>
 
                                 <div>
@@ -91,7 +91,43 @@
                 </div>
 
 
-                <div class="w-4/12 border">Hi</div>
+                <div class="w-4/12 py-6 px-4 rounded border">
+                    <h1 class="font-semibold text-xl">SUMMARY</h1>
+
+                        <div v-if="cart.length">
+                            <div v-for="item in cart" :key="item.id" class="grid grid-cols-6 items-start gap-2 my-8">
+                                <div class="col-span-1"><img :src="item.image" :alt="item.alt" class="w-16 cart_img"></div>
+                                <div class="col-span-2">
+                                    <p class="font-semibold">{{ item.cart_name}}</p>
+                                    <p class="font-semibold opacity-60">${{ item.unit_price.toLocaleString(undefined, {minimumFractionDigits: 2}) }}</p>
+                                </div>
+                                <div class="check-group col-span-3 text-right"> x{{ item.quantity }} </div>
+                            
+                            </div>
+                            <div class="flex my-4">
+                                <h1 class="text-base font-semibold opacity-50">TOTAL</h1>
+                                <div class="font-bold text-lg">${{ itemTotal }}</div>
+                            </div>
+                            <div class="flex my-4">
+                                <h1 class="text-base font-semibold opacity-50">SHIPPING</h1>
+                                <div class="font-bold text-lg">${{ shipping }}</div>
+                            </div>
+                            <div class="flex my-2">
+                                <h1 class="text-base font-semibold opacity-50">VAT (INCLUDED)</h1>
+                                <div class="font-bold text-lg">${{ vat }}</div>
+                            </div>
+                            <div class="flex mt-8 mb-4">
+                                <h1 class="text-base font-semibold opacity-50">GRAND TOTAL</h1>
+                                <div class="font-bold text-lg" style="color:#D97E4A;">${{ grandTotal }}</div>
+                            </div>
+                            <NuxtLink to="/Checkout"><button class="checkout-btn hovie">CONTINUE & PAY</button></NuxtLink>
+                        </div>
+                        <div v-else>
+                            <img src="https://www.nicepng.com/png/full/16-166530_discover-the-coolest-pusheen-gif-no-background.png" alt="" class="mx-auto w-40 mt-10">
+                            <h1 class="py-8 font-semibold text-center">OOPS! YOUR ITEMS WENT MISSING <span>&#128580;</span></h1>
+                            <NuxtLink to="/"><button class="checkout-btn hovie">CONTINUE TO SHOP</button></NuxtLink>
+                        </div>
+                </div>
             </div>
 
         </section>
@@ -133,6 +169,30 @@ export default {
             this.cash_on_delivery_group = true;
             this.e_money_group = false;
          }
+    },
+
+     computed: {
+        cart() {
+            return this.$store.getters.cartItems
+        },
+        
+        itemTotal() {
+            return this.$store.getters.cartTotal
+        },
+
+        shipping() {
+            let shippingFee = 50
+            return shippingFee.toLocaleString(undefined, {minimumFractionDigits: 2})
+        },
+
+        vat() {
+             return this.$store.getters.vat
+        },
+
+        grandTotal() {
+            return this.$store.getters.grandTotal
+        }
+
     }
 }
 </script>

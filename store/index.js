@@ -38,6 +38,19 @@ const createStore = () => {
           let myTotal = total.toLocaleString(undefined, {minimumFractionDigits: 2})
             return myTotal
      },
+
+      grandTotal: state => {
+        let total = state.cart.reduce((sum,item) => sum + item.unit_price * item.quantity, 50);
+          let myTotal = total.toLocaleString(undefined, {minimumFractionDigits: 2})
+            return myTotal
+     },
+
+     vat: state => {
+        let total = state.cart.reduce((sum,item) => sum + item.unit_price * item.quantity, 0);
+        let multipliedTotal = total * 20/100
+        let myTotal = multipliedTotal.toLocaleString(undefined, {minimumFractionDigits: 2})
+        return myTotal
+   },
     },
 
     
