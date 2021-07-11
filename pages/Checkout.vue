@@ -6,7 +6,7 @@
             <button @click="goBack" class="mt-24 text-sm mb-2"> Go Back</button>
 
             <div class="flex-start gap-8 ">
-                <div class="w-8/12 border py-8 px-6">
+                <div class="w-8/12 border py-8 px-6 rounded-xl">
                     <h1 class="check-group text-2xl">CHECKOUT</h1>
                     <p class="check-text">BILLING DETAILS</p>
 
@@ -52,7 +52,7 @@
                                 </div>
                             </div>
 
-                            <p class="check-text manrope">PAYMENT DETAILS</p>
+                            <p class="check-text">PAYMENT DETAILS</p>
 
                             <div class="grid grid-cols-2 gap-4 py-5">
                                 <div class="">
@@ -60,15 +60,30 @@
                                 </div>
 
                                 <div>
-                                   <div class="pb-6">
-                                        <label class="check-group text-sm">City</label>
-                                        <input type="text" placeholder="New York" class="input-group"/>
+                                   <div class="pb-6 input-group mb-5">
+                                        <input type="radio" id="test1" name="payment-type" checked/>
+                                        <label class="check-group" for="test1">e-Money</label>
                                     </div>
-                                    <div>
-                                        <label class="check-group text-sm">City</label>
-                                        <input type="text" placeholder="New York" class="input-group"/>
+                                    <div class="input-group">
+                                        <input type="radio" id="test2" name="payment-type"/>
+                                        <label class="check-group" for="test2">Cash on Delivery</label>
                                     </div>
                                 </div>
+                            </div>
+                            <!--toggle area-->
+                            <div class="grid grid-cols-2 gap-4 py-5">
+                                <div class="">
+                                    <label class="check-group text-sm">E-Money Number</label>
+                                    <input type="text" placeholder="400387834" class="input-group"/>
+                                </div>
+                                <div>
+                                    <label class="check-group text-sm">E-Money Pin</label>
+                                    <input type="text" placeholder="5684" class="input-group"/>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-5 gap-4 py-5 items-center">
+                                <img :src="shape" alt="icon" class="col-span-1">
+                                <p class="col-span-4">The ‘Cash on Delivery’ option enables you to pay in cash when our delivery courier arrives at your residence. Just make sure your address is correct so that your order will not be cancelled.</p>
                             </div>
                         </div>
                     </form>
@@ -89,6 +104,7 @@
 
 import Header from '../components/Header.vue'
 import Footer from '../components/Footer.vue'
+import shape from '../assets/images/Shape.png'
 
 export default {
     name:"Headphones",
@@ -99,7 +115,7 @@ export default {
 
     data() {
         return {
-            
+            shape
         }
     },
 
@@ -139,5 +155,56 @@ export default {
     }
     ::placeholder{
         color:#929596;
+    }
+
+    [type="radio"]:checked,
+    [type="radio"]:not(:checked) {
+        position: absolute;
+        left: -9999px;
+    }
+    [type="radio"]:checked + label,
+    [type="radio"]:not(:checked) + label
+    {
+        position: relative;
+        padding-left: 28px;
+        cursor: pointer;
+        line-height: 20px;
+        display: inline-block;
+        color: #666;
+    }
+    [type="radio"]:checked + label:before,
+    [type="radio"]:not(:checked) + label:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 18px;
+        height: 18px;
+        border: 1px solid #ddd;
+        border-radius: 100%;
+        background: #fff;
+    }
+    [type="radio"]:checked + label:after,
+    [type="radio"]:not(:checked) + label:after {
+        content: '';
+        width: 12px;
+        height: 12px;
+        background: #D97E4A;
+        position: absolute;
+        top: 2.9px;
+        left:2.9px;
+        border-radius: 100%;
+        -webkit-transition: all 0.2s ease;
+        transition: all 0.2s ease;
+    }
+    [type="radio"]:not(:checked) + label:after {
+        opacity: 0;
+        -webkit-transform: scale(0);
+        transform: scale(0);
+    }
+    [type="radio"]:checked + label:after {
+        opacity: 1;
+        -webkit-transform: scale(1);
+        transform: scale(1);
     }
 </style>
