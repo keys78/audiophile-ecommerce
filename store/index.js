@@ -29,13 +29,8 @@ const createStore = () => {
         updateCartFromLocalStorage(state) 
         return state.cart
       },
-      
-      cartLength:state => {
-        updateCartFromLocalStorage(state) 
-        return state.cart.length
-      },
 
-      userName:state => {
+      userName: state => {
         return state.userName
       },
 
@@ -56,11 +51,11 @@ const createStore = () => {
         let multipliedTotal = total * 20/100
         let myTotal = multipliedTotal.toLocaleString(undefined, {minimumFractionDigits: 2})
         return myTotal
-   },
+      },
+
     },
 
-    
-    
+     
     mutations: {
       addToCart (state, product){
         let item = state.cart.find(i => i.id === product.id)
@@ -98,6 +93,7 @@ const createStore = () => {
         }
         updateLocalStorage(state.cart)
       },
+      
 
       increaseFromCart (state, item) {
         item.quantity++

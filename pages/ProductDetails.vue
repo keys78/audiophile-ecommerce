@@ -60,24 +60,22 @@
 
             <div>
                 <div class="sub-headers text-center">YOU MAY ALSO LIKE </div>
-                <NuxtLink :to="{name: 'ProductDetails', params: { id:2 }}">
-                    <Button text="SEE PRODUCT" bgcolor="#D97E4A" textColor="hsl(0, 0%, 98%)"/>
-                </NuxtLink>
-                <NuxtLink :to="{name: 'ProductDetails', params: { id:3 }}">
-                    <Button text="SEE PRODUCT" bgcolor="#D97E4A" textColor="hsl(0, 0%, 98%)"/>
-                </NuxtLink>
-                <NuxtLink :to="{name: 'ProductDetails', params: { id:3 }}">
-                    <Button text="SEE PRODUCT" bgcolor="#D97E4A" textColor="hsl(0, 0%, 98%)"/>
-                </NuxtLink>
+                <!-- <div v-for="product in products" :key="product.id" class="pb-28">
+            
+                        <NuxtLink :to="{name: 'Headphones', params: { id: product.id }}">
+                            <Button text="SEE PRODUCT" bgcolor="#D97E4A" textColor="hsl(0, 0%, 98%)"/>
+                        </NuxtLink>
+                   
+                </div> -->
             </div>
 
 
         </div>
 
          
-        <div class="mt-80"></div>
+        <div class="mt-40"></div>
         <ProductType />
-        <Villian />
+        <Villian class="my-40" />
         <Footer />
     </section>
 </template>
@@ -88,7 +86,7 @@ import Villian from '../components/Villian.vue'
 import Footer from '../components/Footer.vue'
 import Button from '../components/Button.vue'
 import ProductType from '../components/ProductType.vue'
-import products from '~/data/products'
+// import products from '~/data/products'
 
 export default {
     name:"ProductDetails",
@@ -103,6 +101,7 @@ export default {
     data() {
         return {
             id: this.$route.params.id,
+            //  products:products
         }
     },
 

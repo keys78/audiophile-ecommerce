@@ -2,7 +2,7 @@
     <footer class="footer">
         <div class="w-9/12 mx-auto"><p class="footer-top-design h-1 w-28"></p></div>
         <div class="w-9/12 mx-auto py-8 flex">
-            <h1 class="logo w-8/12">audiophile</h1>
+            <NuxtLink to="/"><h1 class="logo w-8/12">audiophile</h1></NuxtLink>
             <div class="flex w-4/12 mx-auto text-center">
                 <NuxtLink to="/"><h2>Home</h2></NuxtLink>
                 <NuxtLink to="/Headphones"><h2>Headphones</h2></NuxtLink>

@@ -1,7 +1,7 @@
 <template>
     <header>
         <div class="nav w-9/12 mx-auto flex">
-            <h1 class="logo w-2/12">audiophile</h1>
+            <NuxtLink to="/"><h1 class="logo w-2/12">audiophile</h1></NuxtLink>
             <!-- <img :src="LOGO" alt="logo"> -->
             <div class="nav-elements flex w-5/12 mx-auto text-center">
                 <NuxtLink to="/"><h2>Home</h2></NuxtLink>
@@ -47,7 +47,7 @@ export default {
     beforeMount() {
 
         this.cart = JSON.parse(localStorage.getItem('cart'))
-        
+
         if (!this.cart) {
             let newCart = []
            localStorage.setItem('cart', JSON.stringify(newCart))
@@ -59,7 +59,8 @@ export default {
 
     computed: {
         myCartLength() {
-            return this.$store.getters.cartLength
+            return this.$store.getters.cartItems.length
+            
         },
     },
  

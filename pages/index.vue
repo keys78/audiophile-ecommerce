@@ -8,7 +8,9 @@
           <h1 class="hero-1-text">NEW PRODUCT</h1>
           <h1 class="hero-2-text">XX99 MARK II HEADPHONE</h1>
           <p class="desc">Experience natural, lifelike audio and exceptional build quality made for the passionate music enthusiast.</p>
-          <Button text="SEE PRODUCT" bgcolor="#D97E4A" textColor="hsl(0, 0%, 98%)"/>
+          <NuxtLink :to="{name: 'ProductDetails', params: { id: 1 }}">
+              <Button text="SEE PRODUCT" bgcolor="#D97E4A" textColor="hsl(0, 0%, 98%)"/>
+          </NuxtLink>
         </div>
       </div>
     </div>
@@ -30,7 +32,9 @@
             <div class="pl-10">
               <h1 class="text-5xl text-white font-bold pt-12">ZX9 <br> SPEAKER</h1>
               <p class="zx9-text py-10">Upgrade to premium speakers that are phenomenally built to deliver truly remarkable sound.</p>
-              <Button text="SEE PRODUCT" bgcolor="black" textColor="hsl(0, 0%, 98%)" />
+               <NuxtLink :to="{name: 'ProductDetails', params: { id: 4 }}">
+                  <Button text="SEE PRODUCT" bgcolor="black" textColor="hsl(0, 0%, 98%)" />
+              </NuxtLink>
             </div>
           </div>
 
@@ -43,7 +47,9 @@
         <div class="absolute w-full h-full top-0 left-0">
             <div class="h-full w-10/12 mx-auto mx-auto pt-12">
               <h1 class="text-3xl pt-16 text-black font-semibold"> ZX7 SPEAKER </h1>
-              <Button text="SEE PRODUCT" bgcolor="none" textColor="black" class="mt-10 border border-black" />
+              <NuxtLink :to="{name: 'ProductDetails', params: { id: 5 }}">
+                  <Button text="SEE PRODUCT" bgcolor="none" textColor="black" class="mt-10 border border-black" />
+              </NuxtLink>
             </div>
         </div>
       </div>
@@ -55,7 +61,9 @@
         </div>
         <div class="showcase-3b pt-28 pl-6 w-6/12">
           <h1 class="text-3xl mb-10 text-black font-semibold"> YX1 EARPHONES </h1>
-          <Button text="SEE PRODUCT" bgcolor="white" textColor="black" class="border border-black" />
+          <NuxtLink :to="{name: 'ProductDetails', params: { id: 6 }}">
+              <Button text="SEE PRODUCT" bgcolor="white" textColor="black" class="border border-black" />
+          </NuxtLink>
         </div>
 
       </div>
