@@ -9,27 +9,28 @@
         <section class="w-9/12 mx-auto mb-10">
             <button @click="goBack" class="hover:text-yellow-800 mt-20 text-sm opacity-50 font-bold cursor:pointer mb-6"> Go Back</button>
 
-            <div class="flex-start gap-8 checkout-holder">
+            <form @submit.prevent="validateForm" class="flex-start gap-8 checkout-holder">
                 <div class="w-8/12 py-8 px-6 rounded-md bg-white">
                     <h1 class="check-group text-2xl">CHECKOUT</h1>
                     <p class="check-text">BILLING DETAILS</p>
 
-                    <form>
+                    <form >
                         <div>
                             <div class="grid grid-cols-2 gap-4 py-5">
                                 <div class="">
-                                    <label class="check-group text-sm">Name</label>
-                                    <input type="text" v-model="userName" placeholder="Aleyx Madom" class="input-group"/>
+                                    <label class="check-group text-sm">Name</label> <span class="error-group">{{ errorName }}</span>
+                                    <input type="text" v-model="userName" placeholder="Aleyx Madom" class="input-group" required/>
+                                    <span></span>
                                 </div>
                                 <div>
-                                    <label class="check-group text-sm">Email</label>
-                                    <input type="text" placeholder="Aleyx@gmail.com" class="input-group"/>
+                                    <label class="check-group text-sm">Email</label> <span class="error-group">{{ errorMail }}</span>
+                                    <input type="text" v-model="email" placeholder="Aleyx@gmail.com" class="input-group"/>
                                 </div>
                             </div>
                             <div class="grid grid-cols-2 gap-4">
                                 <div>
-                                   <label class="check-group text-sm">Phone Number</label>
-                                    <input type="text" placeholder="+234 810 8243 267" class="input-group"/>
+                                   <label class="check-group text-sm">Phone Number</label> <span class="error-group">{{ errorPhone }}</span>
+                                    <input type="text" v-model="phoneNumber" placeholder="+234 810 8243 267" class="input-group"/>
                                 </div>
                             </div>
                             
@@ -124,7 +125,8 @@
                                 <h1 class="text-base font-semibold opacity-50">GRAND TOTAL</h1>
                                 <div class="font-bold text-lg" style="color:#D97E4A;">${{ grandTotal }}</div>
                             </div>
-                            <button @click="openConfirmation" class="checkout-btn hovie">CONTINUE & PAY</button>
+                            <button class="checkout-btn hovie">CONTINUE & PAY</button>
+                            <!-- <button @click="openConfirmation" class="checkout-btn hovie">CONTINUE & PAY</button> -->
                         </div>
                         <div v-else>
                             <img src="https://www.nicepng.com/png/full/16-166530_discover-the-coolest-pusheen-gif-no-background.png" alt="" class="mx-auto w-40 mt-10">
@@ -132,7 +134,7 @@
                             <NuxtLink to="/"><button class="checkout-btn hovie">CONTINUE TO SHOP</button></NuxtLink>
                         </div>
                 </div>
-            </div>
+            </form>
 
         </section>
         
@@ -161,7 +163,14 @@ export default {
             e_money_group:true,
             cash_on_delivery_group:false,
             confirmOrder:false,
-            userName:''
+            errorName:"",
+            errorMail:"",
+            errorPhone:"",
+            userName:'',
+            userName:null,
+            email:null,
+            phoneNumber:null,
+            errors:[]
         }
     },
 
@@ -181,8 +190,26 @@ export default {
          },
 
          openConfirmation() {
-            this.confirmOrder = true
-            this.$store.state.userName = this.userName
+           
+        },
+
+        validateForm() {
+           if(this.userName && this.email && this.phoneNumber) {
+                this.confirmOrder = true
+                this.$store.state.userName = this.userName
+                validateForm().reset()
+               return true
+           } else {
+            if(!this.userName) {
+                this.errorName = "Name Required"
+            }
+            if(!this.email) {
+                this.errorMail = "Email Required"
+            }
+            if(!this.phoneNumber) {
+                this.errorPhone = "Phone Number Required"
+            }
+           }
         }
     },
 
@@ -246,6 +273,46 @@ export default {
     .checkout-holder{
         background: hsl(0, 0%, 96%);
     }
+
+    .error-group{
+        font-size: 11px;
+        font-weight: 600;
+        color:red;
+        /* margin-left: 140px; */
+    }
+
+        /* input + span {
+    position: relative;
+    }
+
+    input + span::before {
+    position: absolute;
+    right: -20px;
+    top: 5px;
+    }
+
+    input:invalid {
+    border: 2px solid red;
+    }
+
+    input:invalid + span::before {
+    content: '✖';
+    color: red;
+    }
+
+    input:valid + span::before {
+    content: '✓';
+    color: green;
+    } */
+
+
+
+
+
+
+
+
+
 
 
 

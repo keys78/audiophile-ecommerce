@@ -45,7 +45,16 @@ export default {
     },
    
     beforeMount() {
+
         this.cart = JSON.parse(localStorage.getItem('cart'))
+        
+        if (!this.cart) {
+            let newCart = []
+           localStorage.setItem('cart', JSON.stringify(newCart))
+        } else {
+            this.cart = JSON.parse(localStorage.getItem('cart'))
+        }
+        
     },
 
     computed: {

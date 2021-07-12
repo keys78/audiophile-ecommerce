@@ -26,8 +26,7 @@
                         </div>
                         
                         <div>
-                            <!-- <Button @click="addToCart" :text="product.add_to_cart_btn" bgcolor="#D97E4A" textColor="hsl(0, 0%, 98%)"/> -->
-                            <button @click="addToCart">{{ product.add_to_cart_btn }}</button>
+                            <button class="checkout-btn hovie" @click="addToCart">{{ product.add_to_cart_btn }}</button>
                         </div>
                     </div>
                         
@@ -104,7 +103,6 @@ export default {
     data() {
         return {
             id: this.$route.params.id,
-            // product_quantity:1
         }
     },
 
@@ -115,6 +113,14 @@ export default {
             if(product.id === this.id) { this.product = product }
         });
        
+        // let cart = []
+        // // localStorage.setItem('cart', JSON.stringify(cart))
+
+        // if (this.cart === null) {
+        //    localStorage.setItem('cart', JSON.stringify(cart))
+        // } else {
+        //     // this.invoices = JSON.parse(localStorage.getItem('invoices'))
+        // }
          
     },
     mounted() {

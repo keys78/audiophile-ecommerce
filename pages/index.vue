@@ -98,6 +98,18 @@ export default {
       zx9Speaker,
       patternCirle
     }
+  },
+  
+  beforeMount() {
+    // cart = JSON.parse(localStorage.getItem('cart'))
+    // if(!cart) {
+    //    this.cart = []
+    //   localStorage.setItem('cart', JSON.stringify(cart))
+    // } else {
+    //   // this.$store.commit('updateCartFromLocalStorage')
+    // }
+    
+
   }
 }
 </script>
