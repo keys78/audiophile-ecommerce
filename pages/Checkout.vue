@@ -126,7 +126,6 @@
                                 <div class="font-bold text-lg" style="color:#D97E4A;">${{ grandTotal }}</div>
                             </div>
                             <button class="checkout-btn hovie">CONTINUE & PAY</button>
-                            <!-- <button @click="openConfirmation" class="checkout-btn hovie">CONTINUE & PAY</button> -->
                         </div>
                         <div v-else>
                             <img src="https://www.nicepng.com/png/full/16-166530_discover-the-coolest-pusheen-gif-no-background.png" alt="" class="mx-auto w-40 mt-10">
@@ -189,26 +188,26 @@ export default {
             this.e_money_group = false;
          },
 
-         openConfirmation() {
-           
-        },
-
         validateForm() {
            if(this.userName && this.email && this.phoneNumber) {
                 this.confirmOrder = true
                 this.$store.state.userName = this.userName
-                validateForm().reset()
+
+                this.errorName = ''
+                this.errorMail = ''
+                this.errorPhone = ''
+
                return true
            } else {
-            if(!this.userName) {
-                this.errorName = "Name Required"
-            }
-            if(!this.email) {
-                this.errorMail = "Email Required"
-            }
-            if(!this.phoneNumber) {
-                this.errorPhone = "Phone Number Required"
-            }
+                if(!this.userName) {
+                    this.errorName = "Name Required"
+                }
+                if(!this.email) {
+                    this.errorMail = "Email Required"
+                }
+                if(!this.phoneNumber) {
+                    this.errorPhone = "Phone Number Required"
+                }
            }
         }
     },

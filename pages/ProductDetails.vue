@@ -113,16 +113,8 @@ export default {
             if(product.id === this.id) { this.product = product }
         });
        
-        // let cart = []
-        // // localStorage.setItem('cart', JSON.stringify(cart))
-
-        // if (this.cart === null) {
-        //    localStorage.setItem('cart', JSON.stringify(cart))
-        // } else {
-        //     // this.invoices = JSON.parse(localStorage.getItem('invoices'))
-        // }
-         
     },
+    
     mounted() {
       this.$store.commit('updateCartFromLocalStorage')
     },

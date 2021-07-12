@@ -31,6 +31,7 @@ const createStore = () => {
       },
       
       cartLength:state => {
+        updateCartFromLocalStorage(state) 
         return state.cart.length
       },
 
