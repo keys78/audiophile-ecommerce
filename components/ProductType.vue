@@ -1,5 +1,5 @@
 <template>
-    <div class="w-9/12 mx-auto pType">
+    <div class="lg:w-9/12 w-11/12 mx-auto pType">
 
         <NuxtLink to="/Headphones">
             <div class="phones-holder">
@@ -62,7 +62,7 @@ export default {
 <style>
 .pType{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 1fr 1fr;
     grid-gap:2rem;
 }
 
@@ -73,6 +73,7 @@ export default {
     text-align: center;
     position: relative;
     transition: ease-in 0.2s all;
+    height: 200px;
 }
 
 .phones-holder:hover .shop h1 {

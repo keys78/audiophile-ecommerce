@@ -3,8 +3,8 @@
     <Header style="z-index:9999999999999"/>
     <div class="hero-container relative">
       <img class="hero mx-auto" :src="HERO"  alt="hero" />
-      <div class="absolute w-9/12 mx-auto top-44 left-48">
-        <div class="xl: w-4/12 w-6/12">
+      <div class="absolute lg:w-9/12 w-11/12 mx-auto lg:top-44 top-20 lg:left-48 left:20">
+        <div class="xl:w-4/12 md:w-6/12 md:text-left text-center">
           <h1 class="hero-1-text">NEW PRODUCT</h1>
           <h1 class="hero-2-text">XX99 MARK II HEADPHONE</h1>
           <p class="desc">Experience natural, lifelike audio and exceptional build quality made for the passionate music enthusiast.</p>

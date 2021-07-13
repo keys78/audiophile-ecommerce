@@ -1,9 +1,10 @@
 <template>
     <header>
-        <div class="nav w-9/12 mx-auto flex">
-            <NuxtLink to="/"><h1 class="logo w-2/12">audiophile</h1></NuxtLink>
-            <!-- <img :src="LOGO" alt="logo"> -->
-            <div class="nav-elements flex w-5/12 mx-auto text-center">
+        <div class="nav lg:w-9/12 w-11/12 mx-auto flex">
+            <div class="md:hidden block w-1/12"><svg width="16" height="15" xmlns="http://www.w3.org/2000/svg"><g fill="#FFF" fill-rule="evenodd"><path d="M0 0h16v3H0zM0 6h16v3H0zM0 12h16v3H0z"></path></g></svg></div>
+            <NuxtLink to="/"><h1 class="logo md:w-2/12 w-8/12">audiophile</h1></NuxtLink>
+
+            <div class="nav-elements flex lg:w-5/12 w-6/12 mx-auto text-center md:flex hidden">
                 <NuxtLink to="/"><h2>Home</h2></NuxtLink>
                 <NuxtLink to="/Headphones"><h2>Headphones</h2></NuxtLink>
                 <NuxtLink to="/Speakers"><h2>Speakers</h2></NuxtLink>
