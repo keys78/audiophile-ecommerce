@@ -174,6 +174,7 @@ export default {
     row-gap: 16px;
 }
 
+
 }
 
 </style>

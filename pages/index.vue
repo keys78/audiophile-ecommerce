@@ -165,9 +165,6 @@ export default {
 .circle-pattern {
   width: 100%;
 }
-/* .zx9 {
-  width: 815px;
-} */
 
 .zx9-text {
   color: hsla(0, 0%, 98%, 0.726);
