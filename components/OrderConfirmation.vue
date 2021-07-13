@@ -1,7 +1,7 @@
 <template>
     <div class="backdrop">
 
-            <div class="w-9/12 mx-auto mt-24">
+            <div class="sm:w-9/12 w-11/12 mx-auto mt-24">
                 <div class="confirmModal">
                     <div class="circle-mark pt-5">
                         <img :src="checkmarks" alt="checkmark" class="mx-auto">

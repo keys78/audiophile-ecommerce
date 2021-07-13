@@ -6,7 +6,7 @@
       <img class="hero-m mx-auto lg:hidden sm:block hidden" :src="HEROT"  alt="hero" />
       <img class="hero-m mx-auto sm:hidden block" :src="HEROM"  alt="hero" />
 
-      <div class="absolute w-full h-full mx-auto top-40 left-0">
+      <div class="absolute w-full h-full mx-auto sm:top-40 top-36 left-0">
         <div class="lg:w-9/12 w-11/12 mx-auto">
           <div class="xl:w-4/12 md:w-6/12 md:text-left text-center">
             <h1 class="hero-1-text">NEW PRODUCT</h1>

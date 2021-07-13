@@ -2,7 +2,7 @@
     <section>
         <Header />
 
-        <div v-for="product in filteredProducts" :key="product.id" class="lg:w-9/12 w-11/12 mx-auto mt-20">
+        <div v-for="product in filteredProducts" :key="product.id" class="lg:w-9/12 w-11/12 mx-auto sm:mt-20 mt-8">
 
             <button @click="goBack" class="hover:text-yellow-800 text-sm opacity-50 font-bold cursor:pointer py-4"> Go Back</button>
             <div class="flex md:flex-row flex-col mb-20">
