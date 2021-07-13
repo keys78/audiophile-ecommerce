@@ -73,7 +73,7 @@ export default {
     text-align: center;
     position: relative;
     transition: ease-in 0.2s all;
-    height: 180px;
+    height: 190px;
 }
 
 .phones-holder:hover .shop h1 {
@@ -84,7 +84,7 @@ export default {
 
 .phones-images{
     width: 12vw;
-    margin-top:-62px;
+    margin-top:-67px;
 }
 .shop{
     width: 12%;

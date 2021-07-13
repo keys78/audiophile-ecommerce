@@ -2,36 +2,44 @@
   <section>
     <Header style="z-index:9999999999999"/>
     <div class="hero-container relative">
-      <img class="hero mx-auto" :src="HERO"  alt="hero" />
-      <div class="absolute lg:w-9/12 w-11/12 mx-auto lg:top-44 top-20 lg:left-48 left:20">
-        <div class="xl:w-4/12 md:w-6/12 md:text-left text-center">
-          <h1 class="hero-1-text">NEW PRODUCT</h1>
-          <h1 class="hero-2-text">XX99 MARK II HEADPHONE</h1>
-          <p class="desc">Experience natural, lifelike audio and exceptional build quality made for the passionate music enthusiast.</p>
-          <NuxtLink :to="{name: 'ProductDetails', params: { id: 1 }}">
-              <Button text="SEE PRODUCT" bgcolor="#D97E4A" textColor="hsl(0, 0%, 98%)"/>
-          </NuxtLink>
+      <img class="hero mx-auto lg:block hidden" :src="HERO"  alt="hero" />
+      <img class="hero-m mx-auto lg:hidden sm:block hidden" :src="HEROT"  alt="hero" />
+      <img class="hero-m mx-auto sm:hidden block" :src="HEROM"  alt="hero" />
+
+      <div class="absolute w-full h-full mx-auto top-40 left-0">
+        <div class="lg:w-9/12 w-11/12 mx-auto">
+          <div class="xl:w-4/12 md:w-6/12 md:text-left text-center">
+            <h1 class="hero-1-text">NEW PRODUCT</h1>
+            <h1 class="hero-2-text">XX99 MARK II HEADPHONE</h1>
+            <p class="desc">Experience natural, lifelike audio and exceptional build quality made for the passionate music enthusiast.</p>
+            <NuxtLink :to="{name: 'ProductDetails', params: { id: 1 }}">
+                <Button text="SEE PRODUCT" bgcolor="#D97E4A" textColor="hsl(0, 0%, 98%)"/>
+            </NuxtLink>
+          </div>
         </div>
       </div>
+
     </div>
 
     <div class="my-40">
       <ProductType />
     </div>
 
-    <section class="w-9/12 mx-auto">
+    <section class="lg:w-9/12 w-11/12 mx-auto">
       <!---showcase-1-->
       <div class="showcase-1 relative overflow-y-hidden pb-40">
         <img :src="patternCirle" class="cirle-pattern -ml-20">
         <div class="absolute w-full h-full overflow-y-hidden top-0 left-0">
 
-          <div class="w-9/12 mx-auto flex-start gap-20 pt-20 ">
-            <div>
-              <img :src="zx9Speaker" class="zx9">
+          <div class="sm:w-9/12 w-11/12 mx-auto flex-start md:flex-row flex-col sm:gap-20 gap-2 sm:pt-20 pt-16 ">
+            <div class="w-full">
+              <img :src="zx9Speaker" class="zx9 w-96 sm:block hidden">
+              <img :src="zx9SpeakerM" class="zx9 w-60 mx-auto sm:hidden block">
             </div>
-            <div class="pl-10">
-              <h1 class="text-5xl text-white font-bold pt-12">ZX9 <br> SPEAKER</h1>
-              <p class="zx9-text py-10">Upgrade to premium speakers that are phenomenally built to deliver truly remarkable sound.</p>
+            <div class="sm:pl-10 ml-0">
+              <h1 class="sm:text-5xl text-3xl text-white font-bold sm:pt-12 pt-4 sm:text-left text-center md:block hidden">ZX9 <br> SPEAKER</h1>
+              <h1 class="sm:text-5xl text-3xl text-white font-bold sm:pt-12 pt-4 sm:text-left text-center md:hidden block">ZX9 SPEAKER</h1>
+              <p class="zx9-text sm:py-10 py-3">Upgrade to premium speakers that are phenomenally built to deliver truly remarkable sound.</p>
                <NuxtLink :to="{name: 'ProductDetails', params: { id: 4 }}">
                   <Button text="SEE PRODUCT" bgcolor="black" textColor="hsl(0, 0%, 98%)" />
               </NuxtLink>
@@ -42,8 +50,9 @@
       </div>
 
       <!--showcase-2-->
-      <div class="showcase-2 relative">
-        <img :src="zx7Speaker" class="zx7">
+      <div class="showcase-2 relative sm:my-0 my-10">
+        <img :src="zx7Speaker" class="zx7 sm:block hidden">
+        <img :src="zx7SpeakerM" class="zx7 sm:hidden block">
         <div class="absolute w-full h-full top-0 left-0">
             <div class="h-full w-10/12 mx-auto mx-auto pt-12">
               <h1 class="text-3xl pt-16 text-black font-semibold"> ZX7 SPEAKER </h1>
@@ -55,14 +64,14 @@
       </div>
 
       <!-- showcase-3 -->
-      <div class="showcase flex">
-        <div class="w-6/12">
+      <div class="showcase flex sm:flex-row sm:gap-6 gap-2 flex-col">
+        <div class="sm:w-6/12 w-full">
           <img :src="yx1Earphones" class="yx1">
         </div>
-        <div class="showcase-3b pt-28 pl-6 w-6/12">
+        <div class="showcase-3b pt-28 pl-6 sm:w-6/12 w-full">
           <h1 class="text-3xl mb-10 text-black font-semibold"> YX1 EARPHONES </h1>
           <NuxtLink :to="{name: 'ProductDetails', params: { id: 6 }}">
-              <Button text="SEE PRODUCT" bgcolor="white" textColor="black" class="border border-black" />
+            <Button text="SEE PRODUCT" bgcolor="white" textColor="black" class="border border-black" />
           </NuxtLink>
         </div>
 
@@ -83,9 +92,13 @@ import Footer from '../components/Footer.vue'
 import Button from '../components/Button.vue'
 import ProductType from '../components/ProductType.vue'
 import HERO from '../assets/images/home/desktop/image-hero-2.jpg'
+import HEROM from '../assets/images/home/mobile/image-header.jpg'
+import HEROT from '../assets/images/home/tablet/image-header.jpg'
 import yx1Earphones from '../assets/images/home/desktop/image-earphones-yx1.jpg'
 import zx7Speaker from '../assets/images/home/desktop/image-speaker-zx7.jpg'
+import zx7SpeakerM from '../assets/images/home/mobile/image-speaker-zx7.jpg'
 import zx9Speaker from '../assets/images/home/desktop/image-speaker-zx9.png'
+import zx9SpeakerM from '../assets/images/home/mobile/image-speaker-zx9.png'
 import patternCirle from '../assets/images/home/desktop/pattern-circles.svg'
 
 export default {
@@ -101,28 +114,27 @@ export default {
   data() {
     return {
       HERO,
+      HEROM,
+      HEROT,
       yx1Earphones,
       zx7Speaker,
+      zx7SpeakerM,
       zx9Speaker,
+      zx9SpeakerM,
       patternCirle
     }
   },
-  
-  beforeMount() {
-    // cart = JSON.parse(localStorage.getItem('cart'))
-    // if(!cart) {
-    //    this.cart = []
-    //   localStorage.setItem('cart', JSON.stringify(cart))
-    // } else {
-    //   // this.$store.commit('updateCartFromLocalStorage')
-    // }
-    
-
-  }
+ 
 }
 </script>
 
 <style>
+.hero{
+  height: 95vh;
+}
+.hero-m {
+  height: 95vh;
+}
 .hero-container {
   background: #191919;
 }
@@ -143,8 +155,8 @@ export default {
   color: hsla(0, 0%, 98%, 0.685);
   padding-bottom: 25px;
   font-weight: 500;
-
 }
+
 .showcase-1 {
   background: #D97E4A;;
   height: 75vh;
@@ -153,26 +165,29 @@ export default {
 .circle-pattern {
   width: 100%;
 }
-.zx9 {
+/* .zx9 {
   width: 815px;
-}
+} */
+
 .zx9-text {
   color: hsla(0, 0%, 98%, 0.726);
 }
 
 .zx7{
   width: 100%;
+  height: 360px;
   border-radius: 10px;
   margin:20px 0 20px 0;
 }
 .yx1 {
     border-radius: 10px;
+    height: 360px;
 }
 
 .showcase-3b {
   background: #F2F2F2;
    border-radius: 10px;
-   height: 320px;
+   height: 360px;
 }
 
 </style>
