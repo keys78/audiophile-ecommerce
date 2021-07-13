@@ -1,7 +1,7 @@
 <template>
     <div class="backdrop" @click.self="$emit('close')">
 
-            <div class="w-9/12 mx-auto">
+            <div class="sm:w-9/12 w-11/12 mx-auto">
                 <div class="cart-container">
                     <div class="pb-3">
                         <div class="flex">
@@ -10,13 +10,13 @@
                         </div>
 
                         <div v-if="cart.length">
-                            <div v-for="item in cart" :key="item.id" class="grid grid-cols-3 items-center my-8">
-                                <div><img :src="item.image" :alt="item.alt" class="w-16 cart_img"></div>
-                                <div>
+                            <div v-for="item in cart" :key="item.id" class="grid grid-cols-5 items-center my-8">
+                                <div><img :src="item.image" :alt="item.alt" class="w-16 col-span-1 cart_img"></div>
+                                <div class="col-span-2 ml-3">
                                     <p class="font-semibold">{{ item.cart_name}}</p>
                                     <p class="font-semibold opacity-60">${{ item.unit_price.toLocaleString(undefined, {minimumFractionDigits: 2}) }}</p>
                                 </div>
-                                <div class="control-panel flex">
+                                <div class="control-panel flex col-span-2 ml-2">
                                     <button @click="decrease_quantity(item)">-</button>
                                     <span>{{ item.quantity }}</span>
                                     <button @click="increase_quantity(item)">+</button>

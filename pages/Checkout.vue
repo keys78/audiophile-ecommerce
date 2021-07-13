@@ -6,11 +6,11 @@
             <OrderConfirmation />
         </div>
 
-        <section class="w-9/12 mx-auto mb-10">
-            <button @click="goBack" class="hover:text-yellow-800 mt-20 text-sm opacity-50 font-bold cursor:pointer mb-6"> Go Back</button>
+        <section class="lg:w-9/12 w-11/12 mx-auto mb-10">
+            <button @click="goBack" class="hover:text-yellow-800 sm:mt-20 mt-8 text-sm opacity-50 font-bold cursor:pointer mb-6"> Go Back</button>
 
-            <form @submit.prevent="validateForm" class="flex-start gap-8 checkout-holder">
-                <div class="w-8/12 py-8 px-6 rounded-md bg-white">
+            <form @submit.prevent="validateForm" class="flex-start md:flex-row flex-col gap-8 checkout-holder">
+                <div class="lg:w-8/12 md:w-7/12 w-full py-8 sm:px-6 px-3 rounded-md bg-white">
                     <h1 class="check-group text-2xl">CHECKOUT</h1>
                     <p class="check-text">BILLING DETAILS</p>
 
@@ -96,7 +96,7 @@
                 </div>
 
 
-                <div class="w-4/12 py-6 px-4 rounded-md bg-white">
+                <div class="lg:w-4/12 md:w-5/12 w-full py-6 px-4 sm:mb-0 mb-10 rounded-md bg-white">
                     <h1 class="font-semibold text-xl">SUMMARY</h1>
 
                         <div v-if="cart.length">

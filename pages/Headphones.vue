@@ -25,7 +25,7 @@
 
         
         <ProductType />
-        <div class="py-32">
+        <div class="pt-28 pb-16">
             <Villian />
         </div>
         <Footer />
@@ -110,21 +110,48 @@ export default {
     justify-content: space-between;
     flex-direction: row-reverse;
 }
+.new-product{
+    display: none;
+}
+
+
+
+
 @media screen and (max-width: 768px) {
 .pomd {
     display: flex;
     justify-content: space-between;
     flex-direction: column-reverse;
-    }
+}
+
 .pType{
     grid-template-columns: 1fr 1fr;
     grid-gap:2rem;
     grid-row-gap: 5rem;
 }
+
 .phones-images{
     width: 20vw;
     margin-top:-40px;
  }
+
+ .headphones-description {
+    padding:20px 0 16px 0;
+}
+
+.sub-headers {
+    font-weight: 600;
+    font-size: 25px;
+    padding-bottom: 10px;
+}
+
+.headphones-text {
+    font-weight: 600;
+    color: hsl(0, 0%, 0%);
+    font-size: 33px;
+
+}
+
 }
 
 @media screen and (max-width: 640px) {
@@ -139,10 +166,14 @@ export default {
  .phones-holder{
     height: 165px;
 }
+
+ .display-products {
+    grid-template-rows: 0px 0px;
+ }
+ .mer {
+    row-gap: 16px;
 }
 
-
-.new-product{
-    display: none;
 }
+
 </style>

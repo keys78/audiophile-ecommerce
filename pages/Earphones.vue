@@ -5,7 +5,7 @@
             <h1>EARPHONES</h1>
         </div>
 
-        <section class="xl:w-9/12 w-11/12 mx-auto mt-32 mb-52">
+        <section class="xl:w-9/12 w-11/12 mx-auto mt-32 sm:mb-52 mb-24">
             <div v-for="product in filteredProducts" :key="product.id" class="pb-28">
                 <div :class="{'pomd' : product.style}" class="flex md:flex-row flex-col-reverse md:text-left text-center">
                     <div class="lg:w-5/12 md:w-6/12 w-11/12 md:pt-0 pt-12">
@@ -25,7 +25,7 @@
 
         
         <ProductType />
-        <div class="py-32">
+        <div class="pt-28 pb-16">
             <Villian />
         </div>
         <Footer />

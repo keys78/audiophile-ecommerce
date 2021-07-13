@@ -2,17 +2,17 @@
     <section>
         <Header />
 
-        <div v-for="product in filteredProducts" :key="product.id" class="w-9/12 mx-auto mt-20">
+        <div v-for="product in filteredProducts" :key="product.id" class="lg:w-9/12 w-11/12 mx-auto mt-20">
 
             <button @click="goBack" class="hover:text-yellow-800 text-sm opacity-50 font-bold cursor:pointer py-4"> Go Back</button>
-            <div class="flex mb-20">
-                <div class="hp-img-1 lg:w-5/12 w-6/12">
+            <div class="flex md:flex-row flex-col mb-20">
+                <div class="hp-img-1 md:w-5/12 w-11/12">
                     <img :src="product.image" :alt="product.alt" class="xx99">
                 </div>
-                <div class="lg:w-5/12 w-6/12">
+                <div class="lg:w-5/12 md:w-6/12 w-11/12 md:mt-0 mt-8">
                     <h1 v-show="product.new_product = true" class="new-text">NEW PRODUCT</h1>
                     <h1 class="headphones-text text-black">{{ product.name }}</h1>
-                    <p class="headphones-desc">{{ product.text_head }}</p>
+                    <p class="headphones-description">{{ product.text_head }}</p>
                     <h1 class="py-6 font-bold">${{ product.unit_price.toLocaleString(undefined, {minimumFractionDigits: 2}) }}</h1>
 
                     <div class="flex items-center">
@@ -34,13 +34,13 @@
             </div>
 
 
-            <div class="flex justify-between items-start">
-                <div class="w-7/12">
+            <div class="flex md:flex-row flex-col justify-between items-start">
+                <div class="md:w-7/12 w-11/12">
                     <h1 class="sub-headers">FEATURES</h1>
                     <h1 class="phones-desc pb-5">{{ product.features.feature_A }}</h1>
                     <h1 class="phones-desc">{{ product.features.feature_B }}</h1>
                 </div>
-                <div class="w-4/12 size-text">
+                <div class="md:w-4/12 w-11/12 size-text md:mt-0 mt-12">
                     <h1 class="sub-headers">IN THE BOX</h1>
                     <p><span class="size-x">{{ product.in_the_box.f1.size }}</span>  <span class="text-x">{{ product.in_the_box.f1.text }}</span></p>
                     <p><span class="size-x">{{ product.in_the_box.f2.size }}</span>  <span class="text-x">{{ product.in_the_box.f2.text }}</span></p>
@@ -50,25 +50,13 @@
                 </div> 
             </div>
 
-            <div class="display-products my-20">
-                <div class="flex flex-col justify-between">
+            <div class="display-products pt-20 pb-28">
+                <div class="mer">
                     <img class="img-1" :src="product.display_image.image_1" >
-                    <img class="img-2 mt-8" :src="product.display_image.image_2" >
+                    <img class="img-2" :src="product.display_image.image_2" >
                 </div>
                 <img class="img-3" :src="product.display_image.image_3" >
             </div>
-
-            <div>
-                <div class="sub-headers text-center">YOU MAY ALSO LIKE </div>
-                <!-- <div v-for="product in products" :key="product.id" class="pb-28">
-            
-                        <NuxtLink :to="{name: 'Headphones', params: { id: product.id }}">
-                            <Button text="SEE PRODUCT" bgcolor="#D97E4A" textColor="hsl(0, 0%, 98%)"/>
-                        </NuxtLink>
-                   
-                </div> -->
-            </div>
-
 
         </div>
 
@@ -167,10 +155,17 @@ export default {
 
 .display-products {
     display: grid;
-    grid-template-columns: 445px 635px;
+    grid-template-columns: 1.1fr 1.6fr;
     grid-template-rows: 280px 280px;
-    column-gap: 27px;
+    column-gap: 7px;
+    
 }
+.mer {
+    display: grid;
+    row-gap: 25px;
+}
+
+
 .sub-headers {
     font-weight: 700;
     font-size: 31px;
@@ -194,6 +189,11 @@ export default {
 .text-x {
     color:black;
     opacity: 0.6;
+}
+.headphones-description {
+    color:black;
+    opacity: 0.5;
+    padding:30px 0 45px 0;
 }
 
 .phones-desc {
