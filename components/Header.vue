@@ -36,11 +36,11 @@
 </template>
 
 <script>
+
 import cart_logo from '../assets/images/shared/desktop/icon-cart.svg'
 import LOGO from '../assets/images/shared/desktop/logo.svg'
 import Cart from '../components/Cart'
 import ProductType from '../components/ProductType.vue'
-
 
 export default {
     name: 'Header',
