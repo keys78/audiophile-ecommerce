@@ -78,7 +78,7 @@ export default {
         },
 
         myCartLength() {
-            return this.$store.getters.cartLength
+            return this.$store.getters.cartItems.length
         },
 
         userName() {

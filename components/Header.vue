@@ -1,14 +1,5 @@
 <template>
     <header>
-        <div v-if="openNav" class="w-full chroma text-black fixed bottom-0 px-5 bg-gray-800 md:hidden block py-6">
-            <div @click="open_nav_control" class="md:hidden block w-1/12">
-                <h1 v-if="openNav" class="close-icon">X</h1>
-            </div>
-            <div class="sm:px-20 vit px-10">
-                <ProductType />
-            </div>
-        </div>
-
         <div class="nav lg:w-9/12 w-11/12 mx-auto flex">
             <div @click="open_nav_control" class="md:hidden block w-1/12">
                 <svg v-if="!openNav" class="close-icon" width="16" height="15" xmlns="http://www.w3.org/2000/svg"><g fill="#FFF" fill-rule="evenodd"><path d="M0 0h16v3H0zM0 6h16v3H0zM0 12h16v3H0z"></path></g></svg>
@@ -28,6 +19,15 @@
         </div>
         <div v-if="openCart">
             <Cart @close="close"/>
+        </div>
+
+        <div v-if="openNav" class="w-full h-screen chroma text-black fixed top-0 left-0 px-5 bg-gray-800 md:hidden block py-6">
+            <div @click="open_nav_control" class="md:hidden block w-1/12">
+                <h1 v-if="openNav" class="close-icon">X</h1>
+            </div>
+            <div class="sm:px-20 vit px-10">
+                <ProductType />
+            </div>
         </div>
 
         
@@ -134,12 +134,11 @@ header h2:hover{
     font-size: 0.75rem;
 }
 .chroma {
-    height: 100vh;
-    z-index: 9999999999999999999999999999999999999999999999999999999999999999;
+  z-index: 999999;
 }
 
 .vit {
-    z-index: 9999999999999999999999999999999999999999999999999999999999999999;
+    z-index: 9999999999999999999;
 }
 
 .close-icon{
