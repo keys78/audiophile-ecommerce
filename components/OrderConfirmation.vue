@@ -26,7 +26,7 @@
                         </div>
                         <div class="bg-black w-5/12 h-full pt-7">
                             <div class="px-5">
-                                <h1 class="text-base text-white font-semibold opacity-50">GRAND TOTAL</h1>
+                                <h1 class="sm:text-base text-sm text-white font-semibold opacity-50">GRAND TOTAL</h1>
                                 <div class="font-bold text-white text-lg">${{ grandTotal }}</div>
                             </div>
                         </div>

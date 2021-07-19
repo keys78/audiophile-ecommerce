@@ -1,4 +1,5 @@
 <template>
+    <transition name="page">
     <section>
         <Header class="bg-black"/>
         <div class="sub-hero">
@@ -31,6 +32,7 @@
         <Footer />
 
     </section>
+    </transition>
 </template>
 
 <script>
@@ -42,6 +44,7 @@ import Footer from '../components/Footer.vue'
 
 export default {
     name:"Headphones",
+    transition: 'test',
     components: {
         Header,
         Villian,
@@ -175,6 +178,17 @@ export default {
 }
 
 
+}
+
+/* Enter and leave animations can use different */
+/* durations and timing functions.              */
+.page-enter-active .page-leave-active{
+  transition: all .3s ease;
+}
+
+.page-enter, .page-leave-active{
+  transform: scale(0);
+  opacity: 0;
 }
 
 </style>
