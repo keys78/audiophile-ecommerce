@@ -31,18 +31,7 @@
                             </div>
                         </div>
                     </div>
-
-
-
-
-
-
-
-
-
-
-
-
+                    
                     <NuxtLink to="/"><button @click="clearCart" class="checkout-btn hovie mt-20">BACK TO HOME</button></NuxtLink>
                 </div>
             </div>

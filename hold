@@ -41,3 +41,34 @@ this.cart = ({
 })
 this.carts.push(this.cart);
 localStorage.setItem('carts', JSON.stringify(this.carts))
+
+
+
+
+
+
+
+
+
+
+ // single_invoice: state => invoice => {
+    //   //  state.invoices.find(i => i.id === invoice.id);
+
+    //    return state.invoices = JSON.parse(localStorage.getItem('invoices'))
+    //     // else return null
+    // },
+
+    invoiceTotal: state => {
+      // const mInvoice = state.invoices.find(i => i.id === invoice.id)
+
+      // if(mInvoice) { 
+      //   let total = state.invoice.addItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+      //   let myTotal = total.toLocaleString(undefined, {minimumFractionDigits: 2})
+      //   return myTotal
+      
+      // }
+      //   else return null
+      return 3
+
+      
+     },
